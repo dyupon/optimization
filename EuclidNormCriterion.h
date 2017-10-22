@@ -14,7 +14,7 @@ public:
     bool is_converged(std::vector<double> function) override;
     bool is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) override;
 private:
-    const int MAX_ITER_COUNT = 100000;
+    const int MAX_ITER_COUNT = 50000;
     int iter_count;
 };
 
