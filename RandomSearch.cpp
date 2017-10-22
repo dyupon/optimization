@@ -1,18 +1,21 @@
 #include <iostream>
 #include "RandomSearch.h"
 
-void RandomSearch::optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) {
+void
+RandomSearch::optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) {
     SquareArea area = function.get_domain();
-    area.set_border({-1,-1,-1},{1, 1, 1});
+    area.set_border({-1, -1, -1}, {1, 1, 1});
     int dim = area.get_dim();
     std::vector<double> upper = area.get_upper();
     std::vector<double> lower = area.get_lower();
     std::vector<double> function_values, old_approximation, x;
+    x = get_random_point(dim, upper, lower);
     function_values.resize(dim);
     old_approximation = get_random_point(dim, upper, lower);
-    double eps = 1.0e-15; double neighbor_radius = 0.1;
+    double eps = 1.0e-15;
+    double neighbor_radius = 0.1;
     std::vector<double> radius = std::vector<double>(dim, neighbor_radius);
-    while (!criteria.is_converged(dim, eps, old_approximation, initial_approximation)){
+    while (!criteria.is_converged(dim, eps, old_approximation, initial_approximation)) {
         std::cout << function.get_function_value(initial_approximation) << std::endl;
         double p_b = runif(gen);
         if (p_b < p) {
@@ -57,7 +60,7 @@ std::vector<double> RandomSearch::get_random_point(int dim, std::vector<double> 
     random_point.resize(dim);
     for (int i = 0; i < dim; ++i) {
         double rnd = runif(gen);
-        random_point[i] = lower[i] + rnd*(upper[i] - lower[i]);
+        random_point[i] = lower[i] + rnd * (upper[i] - lower[i]);
     }
     return random_point;
 }
