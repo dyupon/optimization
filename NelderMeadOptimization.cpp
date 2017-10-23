@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include "NelderMeadOptimization.h"
+#include "OptimizationResult.h"
 
 const double NelderMeadOptimization::ALPHA = 1.0;
 const double NelderMeadOptimization::BETA = 0.5;
@@ -18,7 +19,7 @@ NelderMeadOptimization::NelderMeadOptimization(int _dim, double _scale) : dim(_d
     vm.resize(dim);
 }
 
-std::vector<double> NelderMeadOptimization::optimize(std::vector<double> const& first_approximation,
+OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& first_approximation,
                                                      AbstractCriterion const& criteria,
                                                      Function const& function) {
     std::vector<double> initial_approximation = first_approximation;
@@ -176,5 +177,6 @@ std::vector<double> NelderMeadOptimization::optimize(std::vector<double> const& 
     }
     std::cout << function_evaluations_count << " Function Evaluations" << std::endl;
     std::cout << iter_count << " Iterations through program" << std::endl;
-    return initial_approximation;
+    OptimizationResult optimizationResult = OptimizationResult(iter_count, function_evaluations_count, initial_approximation);
+    return optimizationResult;
 }

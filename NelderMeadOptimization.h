@@ -2,6 +2,7 @@
 #define NELDERMID_NELDERMEADOPTIMIZATION_H
 
 #include "AbstractOptimizationMethod.h"
+#include "OptimizationResult.h"
 
 class NelderMeadOptimization : public AbstractOptimizationMethod {
 private:
@@ -19,7 +20,7 @@ private:
 public:
     NelderMeadOptimization(int _dim, double _scale);
 
-    std::vector<double> optimize(std::vector<double> const& initial_approximation, AbstractCriterion const&criteria, Function const&function) override;
+    OptimizationResult optimize(std::vector<double> const& initial_approximation, AbstractCriterion const&criteria, Function const&function) override;
 };
 
 
