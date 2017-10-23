@@ -6,7 +6,7 @@
 
 class RandomSearch : public AbstractOptimizationMethod {
 public:
-    void optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) override;
+    std::vector<double> optimize(std::vector<double> const& initial_approximation, AbstractCriterion const& criteria, Function const& function) override;
     RandomSearch(double _p);
 private:
     double p;

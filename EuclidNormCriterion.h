@@ -11,11 +11,11 @@
 class EuclidNormCriterion: public AbstractCriterion {
 public:
     EuclidNormCriterion();
-    bool is_converged(std::vector<double> function) override;
-    bool is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) override;
+    bool is_converged(std::vector<double> function) const override;
+    bool is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) const override;
 private:
     const int MAX_ITER_COUNT = 50000;
-    int iter_count;
+    mutable int iter_count;
 };
 
 

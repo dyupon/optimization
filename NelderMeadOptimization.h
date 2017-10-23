@@ -19,7 +19,7 @@ private:
 public:
     NelderMeadOptimization(int _dim, double _scale);
 
-    void optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) override;
+    std::vector<double> optimize(std::vector<double> const& initial_approximation, AbstractCriterion const&criteria, Function const&function) override;
 };
 
 

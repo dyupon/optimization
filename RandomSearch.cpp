@@ -1,10 +1,10 @@
 #include <iostream>
 #include "RandomSearch.h"
 
-void
-RandomSearch::optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) {
+std::vector<double> RandomSearch::optimize(std::vector<double> const& first_approximation, AbstractCriterion const& criteria, Function const& function) {
+    std::vector<double> initial_approximation = first_approximation;
     SquareArea area = function.get_domain();
-    area.set_border({-1, -1, -1}, {1, 1, 1});
+    area.set_border({-10, -10, -10}, {10, 10, 10});
     int dim = area.get_dim();
     std::vector<double> upper = area.get_upper();
     std::vector<double> lower = area.get_lower();
@@ -44,6 +44,7 @@ RandomSearch::optimize(std::vector<double> &initial_approximation, AbstractCrite
         std::cout << initial_approximation[i] << " ";
     }
     std::cout << std::endl;
+    return initial_approximation;
 }
 
 RandomSearch::RandomSearch(double _p) {

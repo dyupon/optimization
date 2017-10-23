@@ -5,9 +5,9 @@
 
 class FunctionOptimize : public Function {
 public:
-    double get_function_value(std::vector<double> x) override;
+    double get_function_value(std::vector<double> x) const override;
     explicit FunctionOptimize(int _dim);
-    SquareArea get_domain() override;
+    SquareArea get_domain() const override;
 private:
     int dim;
     SquareArea area;

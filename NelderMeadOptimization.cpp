@@ -18,9 +18,10 @@ NelderMeadOptimization::NelderMeadOptimization(int _dim, double _scale) : dim(_d
     vm.resize(dim);
 }
 
-void NelderMeadOptimization::optimize(std::vector<double> &initial_approximation,
-                                      AbstractCriterion &criteria,
-                                      Function &function) {
+std::vector<double> NelderMeadOptimization::optimize(std::vector<double> const& first_approximation,
+                                                     AbstractCriterion const& criteria,
+                                                     Function const& function) {
+    std::vector<double> initial_approximation = first_approximation;
     double reflection_point, expansion_point, contraction_point, simplex_vertex_1, simplex_vertex_2, center;
 
     simplex_vertex_1 = scale * (std::sqrt(dim + 1) - 1 + dim) / (dim * std::sqrt(2));
@@ -170,11 +171,10 @@ void NelderMeadOptimization::optimize(std::vector<double> &initial_approximation
         if (criteria.is_converged(function_values)) break;
     }
 
-    std::cout << "The minimum was found at" << std::endl;
     for (int i = 0; i < dim; ++i) {
-        std::cout << simplex[smallest_value_vertex][i] << std::endl;
         initial_approximation[i] = simplex[smallest_value_vertex][i];
     }
     std::cout << function_evaluations_count << " Function Evaluations" << std::endl;
     std::cout << iter_count << " Iterations through program" << std::endl;
+    return initial_approximation;
 }

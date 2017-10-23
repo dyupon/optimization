@@ -8,7 +8,7 @@
 
 class AbstractOptimizationMethod {
 public:
-    virtual void optimize(std::vector<double> &initial_approximation, AbstractCriterion &criteria, Function &function) = 0;
+    virtual std::vector<double> optimize(std::vector<double> const& initial_approximation, AbstractCriterion const& criteria, Function const& function) = 0;
 protected:
     std::vector<double> function_values;
     int function_evaluations_count = 0;

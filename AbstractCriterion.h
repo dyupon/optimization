@@ -6,8 +6,8 @@
 
 class AbstractCriterion {
 public:
-    virtual bool is_converged(std::vector<double> function) = 0;
-    virtual bool is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) = 0;
+    virtual bool is_converged(std::vector<double> function) const = 0;
+    virtual bool is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) const = 0;
 };
 
 
