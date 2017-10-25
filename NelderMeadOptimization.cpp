@@ -27,6 +27,9 @@ OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& f
 
     simplex_vertex_1 = scale * (std::sqrt(dim + 1) - 1 + dim) / (dim * std::sqrt(2));
     simplex_vertex_2 = scale * (std::sqrt(dim + 1) - 1) / (dim * std::sqrt(2));
+   /* SquareArea domain = function.get_domain();
+    std::vector<double> upper = domain.get_upper();
+    std::vector<double> lower = domain.get_lower();*/
 
     for (int i = 0; i < dim; ++i) {
         simplex[0][i] = initial_approximation[i];

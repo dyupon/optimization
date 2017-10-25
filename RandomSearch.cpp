@@ -39,11 +39,6 @@ OptimizationResult RandomSearch::optimize(std::vector<double> const& first_appro
             }
         }
     }
-    std::cout << "Minimum found at: ";
-    for (int i = 0; i < dim; ++i) {
-        std::cout << initial_approximation[i] << " ";
-    }
-    std::cout << std::endl;
     OptimizationResult optimizationResult = OptimizationResult(0, 0, initial_approximation);
     return optimizationResult;
 }

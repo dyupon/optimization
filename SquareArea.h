@@ -18,7 +18,7 @@ public:
     std::vector<double> get_lower() override;
     std::vector<double> get_approximation_inside_border() override;
     bool is_out_of_border(std::vector<double> x) override;
-    std::vector<double> get_random_point_inside();
+    std::vector<double> get_random_point_on_border(std::vector<double> point_1, std::vector<double> point_2);
 };
 
 
