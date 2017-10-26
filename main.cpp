@@ -13,7 +13,9 @@ void printOptimizationResult(const FunctionOptimize &function, const Optimizatio
         std::cout << i << " ";
     }
     std::cout << std::endl << "Minimum was found as: " << std::endl;
-    std::cout << function.get_function_value(extr) << "\t";
+    std::cout << function.get_function_value(extr) << std::endl;
+    std::cout << optimizationResult.get_func_evaluation_count() << " Function Evaluations" << std::endl;
+    std::cout << optimizationResult.get_iter_count() << " Iterations through program" << std::endl;
 }
 
 int main() {
@@ -33,7 +35,7 @@ int main() {
     }
     if (flag == 2) {
         double p;
-        std::cout << "Enter the probability of searching the the whole area: " << std::endl;
+        std::cout << "Enter the probability of searching the whole area: " << std::endl;
         std::cin >> p;
         EuclidNormCriterion euclidNormCriterion = EuclidNormCriterion();
         try {

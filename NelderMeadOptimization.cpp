@@ -169,21 +169,12 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &f
                 ++function_evaluations_count;
             }
         }
-        std::cout << "Iteration " << iter_count << std::endl;
-        for (int j = 0; j <= dim; ++j) {
-            for (int i = 0; i < dim; ++i) {
-                std::cout << simplex[j][i] << ' ';
-            }
-            std::cout << std::endl << function_values[j] << std::endl;
-        }
         if (criteria.is_converged(function_values)) break;
     }
 
     for (int i = 0; i < dim; ++i) {
         initial_approximation[i] = simplex[smallest_value_vertex][i];
     }
-    std::cout << function_evaluations_count << " Function Evaluations" << std::endl;
-    std::cout << iter_count << " Iterations through program" << std::endl;
     OptimizationResult optimizationResult = OptimizationResult(iter_count, function_evaluations_count, initial_approximation);
     return optimizationResult;
 }

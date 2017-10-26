@@ -15,9 +15,12 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &first_appro
     old_approximation = get_random_point(dim, upper, lower);
     double eps = 1.0e-15;
     double neighbor_radius = 0.1;
+    int iterCount = 0;
+    int funcEvalCount = 0;
     std::vector<double> radius = std::vector<double>(dim, neighbor_radius);
     while (!criteria.is_converged(dim, eps, old_approximation, initial_approximation)) {
-        std::cout << function.get_function_value(initial_approximation) << std::endl;
+        ++iterCount;
+        // std::cout << function.get_function_value(initial_approximation) << std::endl;
         double p_b = runif(gen);
         if (p_b < p) {
             x = get_random_point(dim, upper, lower);
@@ -39,8 +42,9 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &first_appro
                 }
             }
         }
+        funcEvalCount += 2;
     }
-    OptimizationResult optimizationResult = OptimizationResult(0, 0, initial_approximation);
+    OptimizationResult optimizationResult = OptimizationResult(iterCount, funcEvalCount, initial_approximation);
     return optimizationResult;
 }
 
