@@ -7,7 +7,7 @@
 
 class Function {
 public:
-    virtual double get_function_value(std::vector<double> x) const = 0;
+    virtual double get_function_value(const std::vector<double> &x) const = 0;
     virtual SquareArea get_domain() const = 0;
 };
 

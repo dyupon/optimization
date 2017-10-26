@@ -10,18 +10,15 @@ private:
     static const double ALPHA;
     static const double BETA;
     static const double GAMMA;
-    std::vector<std::vector<double>> simplex;
-    std::vector<double> vertex_reflection;
-    std::vector<double> vertex_expansion;
-    std::vector<double> vertex_contraction;
-    std::vector<double> vm;
-    const int dim;
+
+    const size_t dim;
     const double scale;
 public:
-    NelderMeadOptimization(int _dim, double _scale);
+    NelderMeadOptimization(size_t _dim, double _scale);
 
-    OptimizationResult optimize(std::vector<double> const& initial_approximation, AbstractCriterion const&criteria, Function const&function) override;
+    OptimizationResult optimize(const std::vector<double> &initial_approximation,
+                                const AbstractCriterion &criteria,
+                                const Function &function) override;
 };
-
 
 #endif //NELDERMID_NELDERMEADOPTIMIZATION_H

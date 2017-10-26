@@ -4,7 +4,7 @@
 EpsilonCriterion::EpsilonCriterion(int _n, double _eps): n(_n), eps(_eps) {
 }
 
-bool EpsilonCriterion::is_converged(std::vector<double> function) const {
+bool EpsilonCriterion::is_converged(const std::vector<double> &function) const {
     double fsum = 0;
     for (int i = 0; i <= n; ++i) {
         fsum += function[i];
@@ -18,6 +18,9 @@ bool EpsilonCriterion::is_converged(std::vector<double> function) const {
     return s < eps;
 }
 
-bool EpsilonCriterion::is_converged(int dim, double eps, std::vector<double> previous_approximation, std::vector<double> new_approximation) const {
+bool EpsilonCriterion::is_converged(size_t dim,
+                                    double eps,
+                                    const std::vector<double> &previous_approximation,
+                                    const std::vector<double> &new_approximation) const {
     return false;
 }

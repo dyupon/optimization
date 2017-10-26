@@ -1,55 +1,53 @@
 #include <cmath>
 #include <iostream>
 #include "NelderMeadOptimization.h"
-#include "OptimizationResult.h"
 
 const double NelderMeadOptimization::ALPHA = 1.0;
 const double NelderMeadOptimization::BETA = 0.5;
 const double NelderMeadOptimization::GAMMA = 2.0;
 
-NelderMeadOptimization::NelderMeadOptimization(int _dim, double _scale) : dim(_dim), scale(_scale) {
-    simplex.resize(dim + 1);
-    for (int i = 0; i < simplex.size(); ++i) {
-        simplex[i].resize(dim);
-    };
-    function_values.resize(dim + 1);
-    vertex_reflection.resize(dim);
-    vertex_expansion.resize(dim);
-    vertex_contraction.resize(dim);
-    vm.resize(dim);
+NelderMeadOptimization::NelderMeadOptimization(size_t _dim, double _scale) : dim(_dim), scale(_scale) {
 }
 
-OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& first_approximation,
-                                                     AbstractCriterion const& criteria,
-                                                     Function const& function) {
+OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &first_approximation,
+                                                    const AbstractCriterion &criteria,
+                                                    const Function &function) {
+    std::vector<double> function_values;
+    function_values.reserve(dim + 1);
+    std::vector<double> vm;
+    vm.reserve(dim);
+
     std::vector<double> initial_approximation = first_approximation;
     double reflection_point, expansion_point, contraction_point, simplex_vertex_1, simplex_vertex_2, center;
 
     simplex_vertex_1 = scale * (std::sqrt(dim + 1) - 1 + dim) / (dim * std::sqrt(2));
     simplex_vertex_2 = scale * (std::sqrt(dim + 1) - 1) / (dim * std::sqrt(2));
-   /* SquareArea domain = function.get_domain();
-    std::vector<double> upper = domain.get_upper();
-    std::vector<double> lower = domain.get_lower();*/
+    /* SquareArea domain = function.get_domain();
+     std::vector<double> upper = domain.get_upper();
+     std::vector<double> lower = domain.get_lower();*/
 
-    for (int i = 0; i < dim; ++i) {
-        simplex[0][i] = initial_approximation[i];
-    }
+    std::vector<std::vector<double>> simplex;
+    simplex.reserve(dim + 1);
+    simplex.push_back(initial_approximation);
 
     for (int i = 1; i <= dim; ++i) {
+        std::vector<double> simplex_row;
+        simplex_row.reserve(dim);
         for (int j = 0; j < dim; ++j) {
             if (i - 1 == j) {
-                simplex[i][j] = simplex_vertex_1 + initial_approximation[j];
+                simplex_row.push_back(simplex_vertex_1 + initial_approximation[j]);
             } else {
-                simplex[i][j] = simplex_vertex_2 + initial_approximation[j];
+                simplex_row.push_back(simplex_vertex_2 + initial_approximation[j]);
             }
         }
+        simplex.push_back(simplex_row);
     }
 
     for (int i = 0; i <= dim; ++i) {
-        function_values[i] = function.get_function_value(simplex[i]);
+        function_values.push_back(function.get_function_value(simplex[i]));
     }
 
-    function_evaluations_count = dim + 1;
+    int function_evaluations_count = dim + 1;
 
     std::cout << "Initial Values" << std::endl;
     for (int i = 0; i <= dim; ++i) {
@@ -91,8 +89,10 @@ OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& f
             vm[i] = center / dim;
         }
 
+        std::vector<double> vertex_reflection;
+        vertex_reflection.reserve(dim);
         for (int i = 0; i <= dim - 1; i++) {
-            vertex_reflection[i] = vm[i] + ALPHA * (vm[i] - simplex[largest_value_vertex][i]);
+            vertex_reflection.push_back(vm[i] + ALPHA * (vm[i] - simplex[largest_value_vertex][i]));
         }
 
 //            TODO: while deforming the simplex fit all the new vertices in borders
@@ -108,8 +108,10 @@ OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& f
         }
 
         if (reflection_point < function_values[smallest_value_vertex]) {
+            std::vector<double> vertex_expansion;
+            vertex_expansion.reserve(dim);
             for (int i = 0; i <= dim - 1; ++i) {
-                vertex_expansion[i] = vm[i] + GAMMA * (vertex_reflection[i] - vm[i]);
+                vertex_expansion.push_back(vm[i] + GAMMA * (vertex_reflection[i] - vm[i]));
             }
 
             expansion_point = function.get_function_value(vertex_expansion);
@@ -129,15 +131,17 @@ OptimizationResult NelderMeadOptimization::optimize(std::vector<double> const& f
         }
 
         if (reflection_point >= function_values[next_smallest_value_vertex]) {
+            std::vector<double> vertex_contraction;
+            vertex_contraction.reserve(dim);
             if (reflection_point < function_values[largest_value_vertex] && reflection_point >= function_values[next_smallest_value_vertex]) {
                 for (int i = 0; i <= dim - 1; ++i) {
-                    vertex_contraction[i] = vm[i] + BETA * (vertex_reflection[i] - vm[i]);
+                    vertex_contraction.push_back(vm[i] + BETA * (vertex_reflection[i] - vm[i]));
                 }
                 contraction_point = function.get_function_value(vertex_contraction);
                 ++function_evaluations_count;
             } else {
                 for (int i = 0; i <= dim - 1; ++i) {
-                    vertex_contraction[i] = vm[i] - BETA * (vm[i] - simplex[largest_value_vertex][i]);
+                    vertex_contraction.push_back(vm[i] - BETA * (vm[i] - simplex[largest_value_vertex][i]));
                 }
                 contraction_point = function.get_function_value(vertex_contraction);
                 ++function_evaluations_count;

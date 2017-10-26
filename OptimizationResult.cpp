@@ -1,7 +1,3 @@
-//
-// Created by User on 10/23/2017.
-//
-
 #include "OptimizationResult.h"
 
 OptimizationResult::OptimizationResult(int _iter_count,

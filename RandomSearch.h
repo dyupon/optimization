@@ -6,15 +6,22 @@
 
 class RandomSearch : public AbstractOptimizationMethod {
 public:
-    OptimizationResult optimize(std::vector<double> const& initial_approximation, AbstractCriterion const& criteria, Function const& function) override;
-    RandomSearch(double _p);
+    OptimizationResult optimize(const std::vector<double> &initial_approximation,
+                                const AbstractCriterion &criteria,
+                                const Function &function) override;
+
+    explicit RandomSearch(double _p);
 private:
     double p;
     std::mt19937 gen;
     std::uniform_real_distribution<> runif;
-    std::vector<double> get_random_point (int dim, std::vector<double> &upper, std::vector<double> &lower);
-    std::vector<double> sum(std::vector<double> a,std::vector<double> b);
-    std::vector<double> diff(std::vector<double> a,std::vector<double> b);
+
+    std::vector<double>
+    get_random_point(size_t dim, const std::vector<double> &upper, const std::vector<double> &lower);
+
+    std::vector<double> sum(const std::vector<double> &a, const std::vector<double> &b) const;
+
+    std::vector<double> diff(const std::vector<double> &a, const std::vector<double> &b) const;
 };
 
 

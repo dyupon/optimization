@@ -1,16 +1,17 @@
 #include <iostream>
 #include "RandomSearch.h"
 
-OptimizationResult RandomSearch::optimize(std::vector<double> const& first_approximation, AbstractCriterion const& criteria, Function const& function) {
+OptimizationResult RandomSearch::optimize(const std::vector<double> &first_approximation,
+                                          const AbstractCriterion &criteria,
+                                          const Function &function) {
     std::vector<double> initial_approximation = first_approximation;
     SquareArea area = function.get_domain();
     area.set_border({-10, -10, -10}, {10, 10, 10});
-    int dim = area.get_dim();
+    size_t dim = area.get_dim();
     std::vector<double> upper = area.get_upper();
     std::vector<double> lower = area.get_lower();
-    std::vector<double> function_values, old_approximation, x;
+    std::vector<double> old_approximation, x;
     x = get_random_point(dim, upper, lower);
-    function_values.resize(dim);
     old_approximation = get_random_point(dim, upper, lower);
     double eps = 1.0e-15;
     double neighbor_radius = 0.1;
@@ -44,6 +45,9 @@ OptimizationResult RandomSearch::optimize(std::vector<double> const& first_appro
 }
 
 RandomSearch::RandomSearch(double _p) {
+    if (_p < 0.0 || _p > 1.0) {
+        throw std::invalid_argument("Probability should be between 0 and 1");
+    }
     std::random_device rd;   // non-deterministic generator
     std::mt19937 mt(rd());
     gen = mt;
@@ -52,17 +56,19 @@ RandomSearch::RandomSearch(double _p) {
     p = _p;
 }
 
-std::vector<double> RandomSearch::get_random_point(int dim, std::vector<double> &upper, std::vector<double> &lower) {
+std::vector<double> RandomSearch::get_random_point(size_t dim,
+                                                   const std::vector<double> &upper,
+                                                   const std::vector<double> &lower) {
     std::vector<double> random_point;
-    random_point.resize(dim);
+    random_point.reserve(dim);
     for (int i = 0; i < dim; ++i) {
         double rnd = runif(gen);
-        random_point[i] = lower[i] + rnd * (upper[i] - lower[i]);
+        random_point.push_back(lower[i] + rnd * (upper[i] - lower[i]));
     }
     return random_point;
 }
 
-std::vector<double> RandomSearch::sum(std::vector<double> a, std::vector<double> b) {
+std::vector<double> RandomSearch::sum(const std::vector<double> &a, const std::vector<double> &b) const {
     std::vector<double> result;
     for (int i = 0; i < a.size(); ++i) {
         result.push_back(a[i] + b[i]);
@@ -70,7 +76,7 @@ std::vector<double> RandomSearch::sum(std::vector<double> a, std::vector<double>
     return result;
 }
 
-std::vector<double> RandomSearch::diff(std::vector<double> a, std::vector<double> b) {
+std::vector<double> RandomSearch::diff(const std::vector<double> &a, const std::vector<double> &b) const {
     std::vector<double> result;
     for (int i = 0; i < a.size(); ++i) {
         result.push_back(a[i] - b[i]);

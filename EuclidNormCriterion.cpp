@@ -2,14 +2,14 @@
 #include "EuclidNormCriterion.h"
 #include <cmath>
 
-bool EuclidNormCriterion::is_converged(std::vector<double> function) const {
+bool EuclidNormCriterion::is_converged(const std::vector<double> &function) const {
     return false;
 }
 
-bool EuclidNormCriterion::is_converged(int dim,
+bool EuclidNormCriterion::is_converged(size_t dim,
                                        double eps,
-                                       std::vector<double> previous_approximation,
-                                       std::vector<double> new_approximation) const {
+                                       const std::vector<double> &previous_approximation,
+                                       const std::vector<double> &new_approximation) const {
     ++iter_count;
     double sum = 0;
     for (int i = 0; i < dim; ++i) {

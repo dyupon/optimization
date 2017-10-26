@@ -9,11 +9,11 @@
 
 class AbstractOptimizationMethod {
 public:
-    virtual OptimizationResult optimize(std::vector<double> const& initial_approximation, AbstractCriterion const& criteria, Function const& function) = 0;
-protected:
-    std::vector<double> function_values;
-    int function_evaluations_count = 0;
+    virtual OptimizationResult optimize(
+            const std::vector<double> &initial_approximation,
+            const AbstractCriterion &criteria,
+            const Function &function
+    ) = 0;
 };
-
 
 #endif //NELDERMID_ABSTRACTOPTIMIZATIONMETHOD_H

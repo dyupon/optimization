@@ -18,7 +18,7 @@ void printOptimizationResult(const FunctionOptimize &function, const Optimizatio
 
 int main() {
     std::vector<double> initial_approximation = {-1.2, 1.0, 1.0};
-    int dim = 3;
+    size_t dim = 3;
     int flag = 0;
     std::cout << "Enter the optimization method: 1 for Nelder-Mead, 2 for random search." << std::endl;
     std::cin >> flag;
@@ -36,9 +36,14 @@ int main() {
         std::cout << "Enter the probability of searching the the whole area: " << std::endl;
         std::cin >> p;
         EuclidNormCriterion euclidNormCriterion = EuclidNormCriterion();
-        RandomSearch randomSearch = RandomSearch(p);
-        OptimizationResult optimizationResult = randomSearch.optimize(initial_approximation, euclidNormCriterion, function);
-        printOptimizationResult(function, optimizationResult);
+        try {
+            RandomSearch randomSearch = RandomSearch(p);
+            OptimizationResult optimizationResult = randomSearch.optimize(initial_approximation, euclidNormCriterion,
+                                                                          function);
+            printOptimizationResult(function, optimizationResult);
+        } catch (const std::invalid_argument &e) {
+            std::cout << e.what() << std::endl;
+        }
     }
     return 0;
 }
