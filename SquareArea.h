@@ -13,17 +13,20 @@ public:
 
     SquareArea();
 
-    size_t get_dim() override;
+    size_t getDim() override;
 
-    void set_border(const std::vector<double> &_upper, const std::vector<double> &_lower) override;
-    std::vector<double> get_upper() override;
-    std::vector<double> get_lower() override;
-    std::vector<double> get_approximation_inside_border() override;
+    void setBorder(const std::vector<double> &_upper, const std::vector<double> &_lower) override;
 
-    bool is_out_of_border(const std::vector<double> &x) override;
+    std::vector<double> getUpper() override;
+
+    std::vector<double> getLower() override;
+
+    std::vector<double> getApproximationInsideBorder() override;
+
+    bool isOutOfBorder(const std::vector<double> &x) override;
 
     std::vector<double>
-    get_random_point_on_border(const std::vector<double> &point_1, const std::vector<double> &point_2);
+    getRandomPointOnBorder(const std::vector<double> &point_1, const std::vector<double> &point_2);
 };
 
 

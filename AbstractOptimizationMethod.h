@@ -10,7 +10,7 @@
 class AbstractOptimizationMethod {
 public:
     virtual OptimizationResult optimize(
-            const std::vector<double> &initial_approximation,
+            const std::vector<double> &initialApproximation,
             const AbstractCriterion &criteria,
             const Function &function
     ) = 0;

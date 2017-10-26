@@ -10,14 +10,17 @@
 
 class OptimizationResult {
 public:
-    OptimizationResult (int _iter_count, int _function_evaluations_count, const std::vector<double> &_minimum_point);
-    int get_iter_count() const;
-    int get_func_evaluation_count() const;
-    const std::vector<double> &get_extr_point() const;
+    OptimizationResult(int _iterCount, int _functionEvaluationsCount, const std::vector<double> &_minimumPoint);
+
+    int getIterCount() const;
+
+    int getFuncEvaluationCount() const;
+
+    const std::vector<double> &getExtrPoint() const;
 private:
-    const int iter_count;
-    const int function_evaluations_count;
-    const std::vector<double> minimum_point;
+    const int iterCount;
+    const int functionEvaluationsCount;
+    const std::vector<double> minimumPoint;
 };
 
 

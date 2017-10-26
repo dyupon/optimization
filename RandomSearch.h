@@ -6,7 +6,7 @@
 
 class RandomSearch : public AbstractOptimizationMethod {
 public:
-    OptimizationResult optimize(const std::vector<double> &initial_approximation,
+    OptimizationResult optimize(const std::vector<double> &initialApproximation,
                                 const AbstractCriterion &criteria,
                                 const Function &function) override;
 

@@ -2,23 +2,23 @@
 #include "EuclidNormCriterion.h"
 #include <cmath>
 
-bool EuclidNormCriterion::is_converged(const std::vector<double> &function) const {
+bool EuclidNormCriterion::isConverged(const std::vector<double> &function) const {
     return false;
 }
 
-bool EuclidNormCriterion::is_converged(size_t dim,
-                                       double eps,
-                                       const std::vector<double> &previous_approximation,
-                                       const std::vector<double> &new_approximation) const {
-    ++iter_count;
+bool EuclidNormCriterion::isConverged(size_t dim,
+                                      double eps,
+                                      const std::vector<double> &previousApproximation,
+                                      const std::vector<double> &newApproximation) const {
+    ++iterCount;
     double sum = 0;
     for (int i = 0; i < dim; ++i) {
-        double difference = new_approximation[i] - previous_approximation[i];
+        double difference = newApproximation[i] - previousApproximation[i];
         sum += difference * difference;
     }
-    return (std::sqrt(sum) < eps) || (iter_count > MAX_ITER_COUNT);
+    return (std::sqrt(sum) < eps) || (iterCount > MAX_ITER_COUNT);
 }
 
 EuclidNormCriterion::EuclidNormCriterion() {
-    iter_count = 0;
+    iterCount = 0;
 }

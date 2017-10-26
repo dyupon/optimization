@@ -1,15 +1,15 @@
 #include <iostream>
 #include "RandomSearch.h"
 
-OptimizationResult RandomSearch::optimize(const std::vector<double> &first_approximation,
+OptimizationResult RandomSearch::optimize(const std::vector<double> &initialApproximation,
                                           const AbstractCriterion &criteria,
                                           const Function &function) {
-    std::vector<double> initial_approximation = first_approximation;
-    SquareArea area = function.get_domain();
-    area.set_border({-10, -10, -10}, {10, 10, 10});
-    size_t dim = area.get_dim();
-    std::vector<double> upper = area.get_upper();
-    std::vector<double> lower = area.get_lower();
+    std::vector<double> initial_approximation = initialApproximation;
+    SquareArea area = function.getDomain();
+    area.setBorder({-10, -10, -10}, {10, 10, 10});
+    size_t dim = area.getDim();
+    std::vector<double> upper = area.getUpper();
+    std::vector<double> lower = area.getLower();
     std::vector<double> old_approximation, x;
     x = get_random_point(dim, upper, lower);
     old_approximation = get_random_point(dim, upper, lower);
@@ -18,13 +18,13 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &first_appro
     int iterCount = 0;
     int funcEvalCount = 0;
     std::vector<double> radius = std::vector<double>(dim, neighbor_radius);
-    while (!criteria.is_converged(dim, eps, old_approximation, initial_approximation)) {
+    while (!criteria.isConverged(dim, eps, old_approximation, initial_approximation)) {
         ++iterCount;
-        // std::cout << function.get_function_value(initial_approximation) << std::endl;
+        // std::cout << function.getFunctionValue(initial_approximation) << std::endl;
         double p_b = runif(gen);
         if (p_b < p) {
             x = get_random_point(dim, upper, lower);
-            if (function.get_function_value(x) < function.get_function_value(initial_approximation)) {
+            if (function.getFunctionValue(x) < function.getFunctionValue(initial_approximation)) {
                 old_approximation = initial_approximation;
                 initial_approximation = x;
             }
@@ -32,9 +32,9 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &first_appro
             SquareArea neighbor = SquareArea(dim);
             std::vector<double> upper_neighbor = sum(x, radius);
             std::vector<double> lower_neighbor = diff(x, radius);
-            neighbor.set_border(upper_neighbor, lower_neighbor);
+            neighbor.setBorder(upper_neighbor, lower_neighbor);
             x = get_random_point(dim, upper_neighbor, lower_neighbor);
-            if (function.get_function_value(x) < function.get_function_value(initial_approximation)) {
+            if (function.getFunctionValue(x) < function.getFunctionValue(initial_approximation)) {
                 old_approximation = initial_approximation;
                 initial_approximation = x;
                 for (int i = 0; i < dim; i++) {

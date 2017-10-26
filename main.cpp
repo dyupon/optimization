@@ -8,14 +8,14 @@
 
 void printOptimizationResult(const FunctionOptimize &function, const OptimizationResult &optimizationResult) {
     std::cout << "Minimum was found at: " << std::endl;
-    std::vector<double> extr = optimizationResult.get_extr_point();
+    std::vector<double> extr = optimizationResult.getExtrPoint();
     for (double i : extr) {
         std::cout << i << " ";
     }
     std::cout << std::endl << "Minimum was found as: " << std::endl;
-    std::cout << function.get_function_value(extr) << std::endl;
-    std::cout << optimizationResult.get_func_evaluation_count() << " Function Evaluations" << std::endl;
-    std::cout << optimizationResult.get_iter_count() << " Iterations through program" << std::endl;
+    std::cout << function.getFunctionValue(extr) << std::endl;
+    std::cout << optimizationResult.getFuncEvaluationCount() << " Function Evaluations" << std::endl;
+    std::cout << optimizationResult.getIterCount() << " Iterations through program" << std::endl;
 }
 
 int main() {

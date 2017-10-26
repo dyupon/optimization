@@ -1,21 +1,21 @@
 #include "OptimizationResult.h"
 
-OptimizationResult::OptimizationResult(int _iter_count,
-                                       int _function_evaluations_count,
-                                       const std::vector<double> &_minimum_point):
-        iter_count(_iter_count),
-        function_evaluations_count(_function_evaluations_count),
-        minimum_point(_minimum_point){
+OptimizationResult::OptimizationResult(int _iterCount,
+                                       int _functionEvaluationsCount,
+                                       const std::vector<double> &_minimumPoint) :
+        iterCount(_iterCount),
+        functionEvaluationsCount(_functionEvaluationsCount),
+        minimumPoint(_minimumPoint) {
 }
 
-const std::vector<double> &OptimizationResult::get_extr_point() const {
-    return minimum_point;
+const std::vector<double> &OptimizationResult::getExtrPoint() const {
+    return minimumPoint;
 }
 
-int OptimizationResult::get_func_evaluation_count() const {
-    return function_evaluations_count;
+int OptimizationResult::getFuncEvaluationCount() const {
+    return functionEvaluationsCount;
 }
 
-int OptimizationResult::get_iter_count() const {
-    return iter_count;
+int OptimizationResult::getIterCount() const {
+    return iterCount;
 }

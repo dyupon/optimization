@@ -10,12 +10,12 @@ class EpsilonCriterion : public AbstractCriterion {
 public:
     EpsilonCriterion(int _n, double _eps);
 
-    bool is_converged(const std::vector<double> &function) const override;
+    bool isConverged(const std::vector<double> &function) const override;
 
-    bool is_converged(size_t dim,
-                      double eps,
-                      const std::vector<double> &previous_approximation,
-                      const std::vector<double> &new_approximation) const override;
+    bool isConverged(size_t dim,
+                     double eps,
+                     const std::vector<double> &previousApproximation,
+                     const std::vector<double> &newApproximation) const override;
 };
 
 

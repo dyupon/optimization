@@ -6,14 +6,17 @@
 
 class AbstractArea {
 public:
-    virtual void set_border(const std::vector<double> &_upper, const std::vector<double> &_lower) = 0;
-    virtual std::vector<double> get_approximation_inside_border() = 0;
+    virtual void setBorder(const std::vector<double> &_upper, const std::vector<double> &_lower) = 0;
 
-    virtual bool is_out_of_border(const std::vector<double> &x) = 0;
-    virtual std::vector<double> get_upper() = 0;
-    virtual std::vector<double> get_lower() = 0;
+    virtual std::vector<double> getApproximationInsideBorder() = 0;
 
-    virtual size_t get_dim()= 0;
+    virtual bool isOutOfBorder(const std::vector<double> &x) = 0;
+
+    virtual std::vector<double> getUpper() = 0;
+
+    virtual std::vector<double> getLower() = 0;
+
+    virtual size_t getDim()= 0;
 };
 
 
