@@ -1,0 +1,90 @@
+\hypertarget{class_random_search}{}\section{Random\+Search Class Reference}
+\label{class_random_search}\index{Random\+Search@{Random\+Search}}
+
+
+Inherited from \hyperlink{class_abstract_optimization_method}{Abstract\+Optimization\+Method} class. Implements random search.  
+
+
+
+
+{\ttfamily \#include $<$Random\+Search.\+h$>$}
+
+Inheritance diagram for Random\+Search\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_random_search}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_random_search_aee62c84ae988d69fb05288f084415858}\label{class_random_search_aee62c84ae988d69fb05288f084415858}} 
+\hyperlink{class_optimization_result}{Optimization\+Result} {\bfseries optimize} (const std\+::vector$<$ double $>$ \&initial\+Approximation, const \hyperlink{class_abstract_criterion}{Abstract\+Criterion} \&criteria, const \hyperlink{class_function}{Function} \&function) override
+\item 
+\mbox{\Hypertarget{class_random_search_a9d45b60cbec1268dc9087ded7cb6b450}\label{class_random_search_a9d45b60cbec1268dc9087ded7cb6b450}} 
+{\bfseries Random\+Search} (double \+\_\+p)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_random_search_a74de0911b029e12f9c02539362e39730}{get\+Random\+Point} (size\+\_\+t dim, const std\+::vector$<$ double $>$ \&upper, const std\+::vector$<$ double $>$ \&lower)
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_random_search_a06f28c1d7afc46a1c0382e6025e7ee4f}{sum} (const std\+::vector$<$ double $>$ \&a, const std\+::vector$<$ double $>$ \&b) const
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_random_search_a8a0a2518afe6d2ff29e8cb9d7b548edc}{diff} (const std\+::vector$<$ double $>$ \&a, const std\+::vector$<$ double $>$ \&b) const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_random_search_a6b1a9499e9568aad8f9028f8fe04c44b}\label{class_random_search_a6b1a9499e9568aad8f9028f8fe04c44b}} 
+double {\bfseries p}
+\item 
+std\+::mt19937 \hyperlink{class_random_search_ac78efe1a921aac4693fa32b69a2b6a98}{gen}
+\item 
+std\+::uniform\+\_\+real\+\_\+distribution \hyperlink{class_random_search_ad84bf71f0524d079d3e9f6f84d0a6dd7}{runif}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherited from \hyperlink{class_abstract_optimization_method}{Abstract\+Optimization\+Method} class. Implements random search. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_random_search_a8a0a2518afe6d2ff29e8cb9d7b548edc}\label{class_random_search_a8a0a2518afe6d2ff29e8cb9d7b548edc}} 
+\index{Random\+Search@{Random\+Search}!diff@{diff}}
+\index{diff@{diff}!Random\+Search@{Random\+Search}}
+\subsubsection{\texorpdfstring{diff()}{diff()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Random\+Search\+::diff (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{a,  }\item[{const std\+::vector$<$ double $>$ \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns componentwise sum of 2 vectors \mbox{\Hypertarget{class_random_search_a74de0911b029e12f9c02539362e39730}\label{class_random_search_a74de0911b029e12f9c02539362e39730}} 
+\index{Random\+Search@{Random\+Search}!get\+Random\+Point@{get\+Random\+Point}}
+\index{get\+Random\+Point@{get\+Random\+Point}!Random\+Search@{Random\+Search}}
+\subsubsection{\texorpdfstring{get\+Random\+Point()}{getRandomPoint()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Random\+Search\+::get\+Random\+Point (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim,  }\item[{const std\+::vector$<$ double $>$ \&}]{upper,  }\item[{const std\+::vector$<$ double $>$ \&}]{lower }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Distribution for P\+R\+NG \mbox{\Hypertarget{class_random_search_a06f28c1d7afc46a1c0382e6025e7ee4f}\label{class_random_search_a06f28c1d7afc46a1c0382e6025e7ee4f}} 
+\index{Random\+Search@{Random\+Search}!sum@{sum}}
+\index{sum@{sum}!Random\+Search@{Random\+Search}}
+\subsubsection{\texorpdfstring{sum()}{sum()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Random\+Search\+::sum (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{a,  }\item[{const std\+::vector$<$ double $>$ \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Gets random point inside the specified by bounds area 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_random_search_ac78efe1a921aac4693fa32b69a2b6a98}\label{class_random_search_ac78efe1a921aac4693fa32b69a2b6a98}} 
+\index{Random\+Search@{Random\+Search}!gen@{gen}}
+\index{gen@{gen}!Random\+Search@{Random\+Search}}
+\subsubsection{\texorpdfstring{gen}{gen}}
+{\footnotesize\ttfamily std\+::mt19937 Random\+Search\+::gen\hspace{0.3cm}{\ttfamily [private]}}
+
+Probability of searching in the whole area \mbox{\Hypertarget{class_random_search_ad84bf71f0524d079d3e9f6f84d0a6dd7}\label{class_random_search_ad84bf71f0524d079d3e9f6f84d0a6dd7}} 
+\index{Random\+Search@{Random\+Search}!runif@{runif}}
+\index{runif@{runif}!Random\+Search@{Random\+Search}}
+\subsubsection{\texorpdfstring{runif}{runif}}
+{\footnotesize\ttfamily std\+::uniform\+\_\+real\+\_\+distribution Random\+Search\+::runif\hspace{0.3cm}{\ttfamily [private]}}
+
+P\+R\+NG 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Random\+Search.\+h\item 
+Random\+Search.\+cpp\end{DoxyCompactItemize}

@@ -1,3 +1,5 @@
+/** \brief Inherits from Function **/
+
 #ifndef NELDERMID_FUNCTIONOPTIMIZE_H
 #define NELDERMID_FUNCTIONOPTIMIZE_H
 
@@ -11,8 +13,8 @@ public:
 
     SquareArea getDomain() const override;
 private:
-    int dim;
-    SquareArea area;
+    int dim; /** Dimension of the area **/
+    SquareArea area; /** Object of class SquareArea where the current function is defined **/
 };
 
 

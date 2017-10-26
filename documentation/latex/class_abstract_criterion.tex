@@ -1,0 +1,46 @@
+\hypertarget{class_abstract_criterion}{}\section{Abstract\+Criterion Class Reference}
+\label{class_abstract_criterion}\index{Abstract\+Criterion@{Abstract\+Criterion}}
+
+
+Abstract base class for criterion of stopping.  
+
+
+
+
+{\ttfamily \#include $<$Abstract\+Criterion.\+h$>$}
+
+Inheritance diagram for Abstract\+Criterion\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_abstract_criterion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_abstract_criterion_a24c1c32d99515c05fdde1c851e12f83f}\label{class_abstract_criterion_a24c1c32d99515c05fdde1c851e12f83f}} 
+virtual bool {\bfseries is\+Converged} (const std\+::vector$<$ double $>$ \&function) const =0
+\item 
+virtual bool \hyperlink{class_abstract_criterion_aa38fc5fe24aabd2b925509961eb017df}{is\+Converged} (size\+\_\+t dim, double eps, const std\+::vector$<$ double $>$ \&previous\+\_\+approximation, const std\+::vector$<$ double $>$ \&new\+\_\+approximation) const =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract base class for criterion of stopping. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_abstract_criterion_aa38fc5fe24aabd2b925509961eb017df}\label{class_abstract_criterion_aa38fc5fe24aabd2b925509961eb017df}} 
+\index{Abstract\+Criterion@{Abstract\+Criterion}!is\+Converged@{is\+Converged}}
+\index{is\+Converged@{is\+Converged}!Abstract\+Criterion@{Abstract\+Criterion}}
+\subsubsection{\texorpdfstring{is\+Converged()}{isConverged()}}
+{\footnotesize\ttfamily virtual bool Abstract\+Criterion\+::is\+Converged (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim,  }\item[{double}]{eps,  }\item[{const std\+::vector$<$ double $>$ \&}]{previous\+\_\+approximation,  }\item[{const std\+::vector$<$ double $>$ \&}]{new\+\_\+approximation }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Checks if the current approximation is good enough based on eps-\/difference between function meanings 
+
+Implemented in \hyperlink{class_epsilon_criterion_a3e548b8cc84db57deb00708b1c361604}{Epsilon\+Criterion}, and \hyperlink{class_euclid_norm_criterion_a210c1396bb5ba2fab199f64eea3a8f76}{Euclid\+Norm\+Criterion}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Abstract\+Criterion.\+h\end{DoxyCompactItemize}

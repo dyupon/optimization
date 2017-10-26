@@ -1,0 +1,67 @@
+\hypertarget{class_function_optimize}{}\section{Function\+Optimize Class Reference}
+\label{class_function_optimize}\index{Function\+Optimize@{Function\+Optimize}}
+
+
+Inherits from \hyperlink{class_function}{Function}.  
+
+
+
+
+{\ttfamily \#include $<$Function\+Optimize.\+h$>$}
+
+Inheritance diagram for Function\+Optimize\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_function_optimize}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_function_optimize_a86b7d0ad4ff9ca2706cb38f7b885771b}\label{class_function_optimize_a86b7d0ad4ff9ca2706cb38f7b885771b}} 
+double {\bfseries get\+Function\+Value} (const std\+::vector$<$ double $>$ \&x) const override
+\item 
+\mbox{\Hypertarget{class_function_optimize_a2b3d0e6b150a4418ad94bdc31b05a169}\label{class_function_optimize_a2b3d0e6b150a4418ad94bdc31b05a169}} 
+{\bfseries Function\+Optimize} (int \+\_\+dim, const std\+::vector$<$ double $>$ \&upper, const std\+::vector$<$ double $>$ \&lower)
+\item 
+\hyperlink{class_square_area}{Square\+Area} \hyperlink{class_function_optimize_a5b2a52f2851494a02fbd52b1862a98ae}{get\+Domain} () const override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_function_optimize_afb9111deb3d272e4648795e23e5271ca}\label{class_function_optimize_afb9111deb3d272e4648795e23e5271ca}} 
+int {\bfseries dim}
+\item 
+\hyperlink{class_square_area}{Square\+Area} \hyperlink{class_function_optimize_ab3593f5f260c05abe0c7704b2356890c}{area}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherits from \hyperlink{class_function}{Function}. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_function_optimize_a5b2a52f2851494a02fbd52b1862a98ae}\label{class_function_optimize_a5b2a52f2851494a02fbd52b1862a98ae}} 
+\index{Function\+Optimize@{Function\+Optimize}!get\+Domain@{get\+Domain}}
+\index{get\+Domain@{get\+Domain}!Function\+Optimize@{Function\+Optimize}}
+\subsubsection{\texorpdfstring{get\+Domain()}{getDomain()}}
+{\footnotesize\ttfamily \hyperlink{class_square_area}{Square\+Area} Function\+Optimize\+::get\+Domain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Gets function value at point x 
+
+Implements \hyperlink{class_function_add150985034ade039806b8beb9890cdc}{Function}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_function_optimize_ab3593f5f260c05abe0c7704b2356890c}\label{class_function_optimize_ab3593f5f260c05abe0c7704b2356890c}} 
+\index{Function\+Optimize@{Function\+Optimize}!area@{area}}
+\index{area@{area}!Function\+Optimize@{Function\+Optimize}}
+\subsubsection{\texorpdfstring{area}{area}}
+{\footnotesize\ttfamily \hyperlink{class_square_area}{Square\+Area} Function\+Optimize\+::area\hspace{0.3cm}{\ttfamily [private]}}
+
+Dimension of the area 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Function\+Optimize.\+h\item 
+Function\+Optimize.\+cpp\end{DoxyCompactItemize}

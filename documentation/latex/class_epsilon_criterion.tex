@@ -1,0 +1,75 @@
+\hypertarget{class_epsilon_criterion}{}\section{Epsilon\+Criterion Class Reference}
+\label{class_epsilon_criterion}\index{Epsilon\+Criterion@{Epsilon\+Criterion}}
+
+
+Inherits from \hyperlink{class_abstract_criterion}{Abstract\+Criterion} class to implement eps-\/based stopping criterion.  
+
+
+
+
+{\ttfamily \#include $<$Epsilon\+Criterion.\+h$>$}
+
+Inheritance diagram for Epsilon\+Criterion\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_epsilon_criterion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_epsilon_criterion_a0f84f83305ad598ca5d5458de648fbc3}{Epsilon\+Criterion} (int \+\_\+n, double \+\_\+eps)
+\item 
+\mbox{\Hypertarget{class_epsilon_criterion_a91397b5d4bb8651a6d8f5294df39f26a}\label{class_epsilon_criterion_a91397b5d4bb8651a6d8f5294df39f26a}} 
+bool {\bfseries is\+Converged} (const std\+::vector$<$ double $>$ \&function) const override
+\item 
+bool \hyperlink{class_epsilon_criterion_a3e548b8cc84db57deb00708b1c361604}{is\+Converged} (size\+\_\+t dim, double \hyperlink{class_epsilon_criterion_aa681adfcb498dadf5f2a5857940d535f}{eps}, const std\+::vector$<$ double $>$ \&previous\+Approximation, const std\+::vector$<$ double $>$ \&new\+Approximation) const override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_epsilon_criterion_aace3bbafc317c894fb7eda51754ae0ef}\label{class_epsilon_criterion_aace3bbafc317c894fb7eda51754ae0ef}} 
+const int {\bfseries dim}
+\item 
+const double \hyperlink{class_epsilon_criterion_aa681adfcb498dadf5f2a5857940d535f}{eps}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherits from \hyperlink{class_abstract_criterion}{Abstract\+Criterion} class to implement eps-\/based stopping criterion. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_epsilon_criterion_a0f84f83305ad598ca5d5458de648fbc3}\label{class_epsilon_criterion_a0f84f83305ad598ca5d5458de648fbc3}} 
+\index{Epsilon\+Criterion@{Epsilon\+Criterion}!Epsilon\+Criterion@{Epsilon\+Criterion}}
+\index{Epsilon\+Criterion@{Epsilon\+Criterion}!Epsilon\+Criterion@{Epsilon\+Criterion}}
+\subsubsection{\texorpdfstring{Epsilon\+Criterion()}{EpsilonCriterion()}}
+{\footnotesize\ttfamily Epsilon\+Criterion\+::\+Epsilon\+Criterion (\begin{DoxyParamCaption}\item[{int}]{\+\_\+n,  }\item[{double}]{\+\_\+eps }\end{DoxyParamCaption})}
+
+Epsilon-\/const used for testing convergence 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_epsilon_criterion_a3e548b8cc84db57deb00708b1c361604}\label{class_epsilon_criterion_a3e548b8cc84db57deb00708b1c361604}} 
+\index{Epsilon\+Criterion@{Epsilon\+Criterion}!is\+Converged@{is\+Converged}}
+\index{is\+Converged@{is\+Converged}!Epsilon\+Criterion@{Epsilon\+Criterion}}
+\subsubsection{\texorpdfstring{is\+Converged()}{isConverged()}}
+{\footnotesize\ttfamily bool Epsilon\+Criterion\+::is\+Converged (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim,  }\item[{double}]{eps,  }\item[{const std\+::vector$<$ double $>$ \&}]{previous\+\_\+approximation,  }\item[{const std\+::vector$<$ double $>$ \&}]{new\+\_\+approximation }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Checks if the current approximation is good enough based on eps-\/difference between function meanings 
+
+Implements \hyperlink{class_abstract_criterion_aa38fc5fe24aabd2b925509961eb017df}{Abstract\+Criterion}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_epsilon_criterion_aa681adfcb498dadf5f2a5857940d535f}\label{class_epsilon_criterion_aa681adfcb498dadf5f2a5857940d535f}} 
+\index{Epsilon\+Criterion@{Epsilon\+Criterion}!eps@{eps}}
+\index{eps@{eps}!Epsilon\+Criterion@{Epsilon\+Criterion}}
+\subsubsection{\texorpdfstring{eps}{eps}}
+{\footnotesize\ttfamily const double Epsilon\+Criterion\+::eps\hspace{0.3cm}{\ttfamily [private]}}
+
+Dimension of the area 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Epsilon\+Criterion.\+h\item 
+Epsilon\+Criterion.\+cpp\end{DoxyCompactItemize}

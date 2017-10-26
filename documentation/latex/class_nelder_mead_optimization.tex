@@ -1,0 +1,95 @@
+\hypertarget{class_nelder_mead_optimization}{}\section{Nelder\+Mead\+Optimization Class Reference}
+\label{class_nelder_mead_optimization}\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+
+
+Inherited from Abstact\+Optimization class to present Nelder-\/\+Mead optimization.  
+
+
+
+
+{\ttfamily \#include $<$Nelder\+Mead\+Optimization.\+h$>$}
+
+Inheritance diagram for Nelder\+Mead\+Optimization\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_nelder_mead_optimization}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_nelder_mead_optimization_a6a733eb1628525f18d098823438cbb94}{Nelder\+Mead\+Optimization} (size\+\_\+t \+\_\+dim, double \+\_\+scale)
+\item 
+\mbox{\Hypertarget{class_nelder_mead_optimization_a312ae6858ab89b72e77e520335524d37}\label{class_nelder_mead_optimization_a312ae6858ab89b72e77e520335524d37}} 
+\hyperlink{class_optimization_result}{Optimization\+Result} {\bfseries optimize} (const std\+::vector$<$ double $>$ \&initial\+Approximation, const \hyperlink{class_abstract_criterion}{Abstract\+Criterion} \&criteria, const \hyperlink{class_function}{Function} \&function) override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const size\+\_\+t \hyperlink{class_nelder_mead_optimization_acc80e311f32769ddbc923cd7e78718d4}{dim}
+\item 
+const double \hyperlink{class_nelder_mead_optimization_aadfa64f4a2f44f60755d7d40d912a53f}{scale}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_nelder_mead_optimization_a55832ed08db34e4009e547ccbfc92f95}\label{class_nelder_mead_optimization_a55832ed08db34e4009e547ccbfc92f95}} 
+static const int {\bfseries M\+A\+X\+\_\+\+IT} = 1000
+\item 
+static const double \hyperlink{class_nelder_mead_optimization_aa23d74cc1718065309ae6cf0daae7ae2}{A\+L\+P\+HA} = 1.\+0
+\item 
+static const double \hyperlink{class_nelder_mead_optimization_abcbd4c2b659649dbefe02c231b10fb2b}{B\+E\+TA} = 0.\+5
+\item 
+static const double \hyperlink{class_nelder_mead_optimization_a67af6800fbfe027f51fd94052b87d615}{G\+A\+M\+MA} = 2.\+0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherited from Abstact\+Optimization class to present Nelder-\/\+Mead optimization. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nelder_mead_optimization_a6a733eb1628525f18d098823438cbb94}\label{class_nelder_mead_optimization_a6a733eb1628525f18d098823438cbb94}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{Nelder\+Mead\+Optimization()}{NelderMeadOptimization()}}
+{\footnotesize\ttfamily Nelder\+Mead\+Optimization\+::\+Nelder\+Mead\+Optimization (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{\+\_\+dim,  }\item[{double}]{\+\_\+scale }\end{DoxyParamCaption})}
+
+Const used for regulating simplex deformation at each step. Optimal values are chosen as default 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_nelder_mead_optimization_aa23d74cc1718065309ae6cf0daae7ae2}\label{class_nelder_mead_optimization_aa23d74cc1718065309ae6cf0daae7ae2}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!A\+L\+P\+HA@{A\+L\+P\+HA}}
+\index{A\+L\+P\+HA@{A\+L\+P\+HA}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{A\+L\+P\+HA}{ALPHA}}
+{\footnotesize\ttfamily const double Nelder\+Mead\+Optimization\+::\+A\+L\+P\+HA = 1.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Upper bound for probable amount of iterations for avoiding infinite looping \mbox{\Hypertarget{class_nelder_mead_optimization_abcbd4c2b659649dbefe02c231b10fb2b}\label{class_nelder_mead_optimization_abcbd4c2b659649dbefe02c231b10fb2b}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!B\+E\+TA@{B\+E\+TA}}
+\index{B\+E\+TA@{B\+E\+TA}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{B\+E\+TA}{BETA}}
+{\footnotesize\ttfamily const double Nelder\+Mead\+Optimization\+::\+B\+E\+TA = 0.\+5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Const used for regulating simplex deformation at each step. Optimal values are chosen as default \mbox{\Hypertarget{class_nelder_mead_optimization_acc80e311f32769ddbc923cd7e78718d4}\label{class_nelder_mead_optimization_acc80e311f32769ddbc923cd7e78718d4}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!dim@{dim}}
+\index{dim@{dim}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily const size\+\_\+t Nelder\+Mead\+Optimization\+::dim\hspace{0.3cm}{\ttfamily [private]}}
+
+Const used for regulating simplex deformation at each step. Optimal values are chosen as default \mbox{\Hypertarget{class_nelder_mead_optimization_a67af6800fbfe027f51fd94052b87d615}\label{class_nelder_mead_optimization_a67af6800fbfe027f51fd94052b87d615}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!G\+A\+M\+MA@{G\+A\+M\+MA}}
+\index{G\+A\+M\+MA@{G\+A\+M\+MA}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{G\+A\+M\+MA}{GAMMA}}
+{\footnotesize\ttfamily const double Nelder\+Mead\+Optimization\+::\+G\+A\+M\+MA = 2.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Const used for regulating simplex deformation at each step. Optimal values are chosen as default \mbox{\Hypertarget{class_nelder_mead_optimization_aadfa64f4a2f44f60755d7d40d912a53f}\label{class_nelder_mead_optimization_aadfa64f4a2f44f60755d7d40d912a53f}} 
+\index{Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}!scale@{scale}}
+\index{scale@{scale}!Nelder\+Mead\+Optimization@{Nelder\+Mead\+Optimization}}
+\subsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily const double Nelder\+Mead\+Optimization\+::scale\hspace{0.3cm}{\ttfamily [private]}}
+
+Dimension of the area 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Nelder\+Mead\+Optimization.\+h\item 
+Nelder\+Mead\+Optimization.\+cpp\end{DoxyCompactItemize}

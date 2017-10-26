@@ -1,0 +1,94 @@
+\hypertarget{class_abstract_area}{}\section{Abstract\+Area Class Reference}
+\label{class_abstract_area}\index{Abstract\+Area@{Abstract\+Area}}
+
+
+Abstract base class for area.  
+
+
+
+
+{\ttfamily \#include $<$Abstract\+Area.\+h$>$}
+
+Inheritance diagram for Abstract\+Area\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_abstract_area}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_abstract_area_a195e59e8c77d56c98dbac73febbd0adc}\label{class_abstract_area_a195e59e8c77d56c98dbac73febbd0adc}} 
+virtual void {\bfseries set\+Border} (const std\+::vector$<$ double $>$ \&\+\_\+upper, const std\+::vector$<$ double $>$ \&\+\_\+lower)=0
+\item 
+virtual std\+::vector$<$ double $>$ \hyperlink{class_abstract_area_a832003b7c0e9e75d417c577b56a3013a}{get\+Approximation\+Inside\+Border} ()=0
+\item 
+virtual bool \hyperlink{class_abstract_area_a16c1ac9b2ece460e5e465cda862ce278}{is\+Out\+Of\+Border} (const std\+::vector$<$ double $>$ \&x)=0
+\item 
+virtual std\+::vector$<$ double $>$ \hyperlink{class_abstract_area_ab54f9d3063d994f780f2b5b67d8751d9}{get\+Upper} ()=0
+\item 
+virtual std\+::vector$<$ double $>$ \hyperlink{class_abstract_area_a6f5b9321813c982b37810b97c2a90257}{get\+Lower} ()=0
+\item 
+virtual size\+\_\+t \hyperlink{class_abstract_area_af7e07218e25ae2864d82d829ff1c10b9}{get\+Dim} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract base class for area. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_abstract_area_a832003b7c0e9e75d417c577b56a3013a}\label{class_abstract_area_a832003b7c0e9e75d417c577b56a3013a}} 
+\index{Abstract\+Area@{Abstract\+Area}!get\+Approximation\+Inside\+Border@{get\+Approximation\+Inside\+Border}}
+\index{get\+Approximation\+Inside\+Border@{get\+Approximation\+Inside\+Border}!Abstract\+Area@{Abstract\+Area}}
+\subsubsection{\texorpdfstring{get\+Approximation\+Inside\+Border()}{getApproximationInsideBorder()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$double$>$ Abstract\+Area\+::get\+Approximation\+Inside\+Border (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Sets upper and lower bounds for Area 
+
+Implemented in \hyperlink{class_square_area_abd7441aaf62dcbf46a22e2d6a5ef34d4}{Square\+Area}.
+
+\mbox{\Hypertarget{class_abstract_area_af7e07218e25ae2864d82d829ff1c10b9}\label{class_abstract_area_af7e07218e25ae2864d82d829ff1c10b9}} 
+\index{Abstract\+Area@{Abstract\+Area}!get\+Dim@{get\+Dim}}
+\index{get\+Dim@{get\+Dim}!Abstract\+Area@{Abstract\+Area}}
+\subsubsection{\texorpdfstring{get\+Dim()}{getDim()}}
+{\footnotesize\ttfamily virtual size\+\_\+t Abstract\+Area\+::get\+Dim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets lower bounds of Area 
+
+Implemented in \hyperlink{class_square_area_a4c0aafc649029e04aeffbb69d70311c5}{Square\+Area}.
+
+\mbox{\Hypertarget{class_abstract_area_a6f5b9321813c982b37810b97c2a90257}\label{class_abstract_area_a6f5b9321813c982b37810b97c2a90257}} 
+\index{Abstract\+Area@{Abstract\+Area}!get\+Lower@{get\+Lower}}
+\index{get\+Lower@{get\+Lower}!Abstract\+Area@{Abstract\+Area}}
+\subsubsection{\texorpdfstring{get\+Lower()}{getLower()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$double$>$ Abstract\+Area\+::get\+Lower (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets upper bounds of Area 
+
+Implemented in \hyperlink{class_square_area_a251a1ca1fc74129265c9d53ed508bf22}{Square\+Area}.
+
+\mbox{\Hypertarget{class_abstract_area_ab54f9d3063d994f780f2b5b67d8751d9}\label{class_abstract_area_ab54f9d3063d994f780f2b5b67d8751d9}} 
+\index{Abstract\+Area@{Abstract\+Area}!get\+Upper@{get\+Upper}}
+\index{get\+Upper@{get\+Upper}!Abstract\+Area@{Abstract\+Area}}
+\subsubsection{\texorpdfstring{get\+Upper()}{getUpper()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$double$>$ Abstract\+Area\+::get\+Upper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Checks if the point is out of Area 
+
+Implemented in \hyperlink{class_square_area_ae9e9fa4d73c245d00c9bce0786fdce5c}{Square\+Area}.
+
+\mbox{\Hypertarget{class_abstract_area_a16c1ac9b2ece460e5e465cda862ce278}\label{class_abstract_area_a16c1ac9b2ece460e5e465cda862ce278}} 
+\index{Abstract\+Area@{Abstract\+Area}!is\+Out\+Of\+Border@{is\+Out\+Of\+Border}}
+\index{is\+Out\+Of\+Border@{is\+Out\+Of\+Border}!Abstract\+Area@{Abstract\+Area}}
+\subsubsection{\texorpdfstring{is\+Out\+Of\+Border()}{isOutOfBorder()}}
+{\footnotesize\ttfamily virtual bool Abstract\+Area\+::is\+Out\+Of\+Border (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets current approximation of extremum in case it steps out of Area 
+
+Implemented in \hyperlink{class_square_area_afd99ae01cff4b1e31511a22e9b89b42a}{Square\+Area}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Abstract\+Area.\+h\end{DoxyCompactItemize}

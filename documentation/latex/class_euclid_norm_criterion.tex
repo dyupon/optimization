@@ -1,0 +1,64 @@
+\hypertarget{class_euclid_norm_criterion}{}\section{Euclid\+Norm\+Criterion Class Reference}
+\label{class_euclid_norm_criterion}\index{Euclid\+Norm\+Criterion@{Euclid\+Norm\+Criterion}}
+
+
+Inherits from \hyperlink{class_abstract_criterion}{Abstract\+Criterion} class to implement Euclid norm based stopping criterion.  
+
+
+
+
+{\ttfamily \#include $<$Euclid\+Norm\+Criterion.\+h$>$}
+
+Inheritance diagram for Euclid\+Norm\+Criterion\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_euclid_norm_criterion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_euclid_norm_criterion_a07b3db6194bf73995c0ca0ec17588b14}\label{class_euclid_norm_criterion_a07b3db6194bf73995c0ca0ec17588b14}} 
+bool {\bfseries is\+Converged} (const std\+::vector$<$ double $>$ \&function) const override
+\item 
+bool \hyperlink{class_euclid_norm_criterion_a210c1396bb5ba2fab199f64eea3a8f76}{is\+Converged} (size\+\_\+t dim, double eps, const std\+::vector$<$ double $>$ \&previous\+Approximation, const std\+::vector$<$ double $>$ \&new\+Approximation) const override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_euclid_norm_criterion_a9148ec33b8025fd5b656cc8222a228f7}\label{class_euclid_norm_criterion_a9148ec33b8025fd5b656cc8222a228f7}} 
+const int {\bfseries M\+A\+X\+\_\+\+I\+T\+E\+R\+\_\+\+C\+O\+U\+NT} = 50000
+\item 
+int \hyperlink{class_euclid_norm_criterion_afbace03a4e9df12244904b3bdcf7a9e2}{iter\+Count}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherits from \hyperlink{class_abstract_criterion}{Abstract\+Criterion} class to implement Euclid norm based stopping criterion. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_euclid_norm_criterion_a210c1396bb5ba2fab199f64eea3a8f76}\label{class_euclid_norm_criterion_a210c1396bb5ba2fab199f64eea3a8f76}} 
+\index{Euclid\+Norm\+Criterion@{Euclid\+Norm\+Criterion}!is\+Converged@{is\+Converged}}
+\index{is\+Converged@{is\+Converged}!Euclid\+Norm\+Criterion@{Euclid\+Norm\+Criterion}}
+\subsubsection{\texorpdfstring{is\+Converged()}{isConverged()}}
+{\footnotesize\ttfamily bool Euclid\+Norm\+Criterion\+::is\+Converged (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim,  }\item[{double}]{eps,  }\item[{const std\+::vector$<$ double $>$ \&}]{previous\+\_\+approximation,  }\item[{const std\+::vector$<$ double $>$ \&}]{new\+\_\+approximation }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Checks if the current approximation is good enough based on eps-\/difference between function meanings 
+
+Implements \hyperlink{class_abstract_criterion_aa38fc5fe24aabd2b925509961eb017df}{Abstract\+Criterion}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_euclid_norm_criterion_afbace03a4e9df12244904b3bdcf7a9e2}\label{class_euclid_norm_criterion_afbace03a4e9df12244904b3bdcf7a9e2}} 
+\index{Euclid\+Norm\+Criterion@{Euclid\+Norm\+Criterion}!iter\+Count@{iter\+Count}}
+\index{iter\+Count@{iter\+Count}!Euclid\+Norm\+Criterion@{Euclid\+Norm\+Criterion}}
+\subsubsection{\texorpdfstring{iter\+Count}{iterCount}}
+{\footnotesize\ttfamily int Euclid\+Norm\+Criterion\+::iter\+Count\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+Upper bound for probable amount of iterations for avoiding infinite looping 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Euclid\+Norm\+Criterion.\+h\item 
+Euclid\+Norm\+Criterion.\+cpp\end{DoxyCompactItemize}

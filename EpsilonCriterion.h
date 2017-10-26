@@ -1,3 +1,5 @@
+/** \brief Inherits from AbstractCriterion class to implement eps-based stopping criterion **/
+
 #ifndef NELDERMID_EPSILONCRITERION_H
 #define NELDERMID_EPSILONCRITERION_H
 
@@ -5,8 +7,8 @@
 #include "AbstractCriterion.h"
 
 class EpsilonCriterion : public AbstractCriterion {
-    const int n;
-    const double eps;
+    const int dim; /** Dimension of the area **/
+    const double eps; /** Epsilon-const used for testing convergence **/
 public:
     EpsilonCriterion(int _n, double _eps);
 

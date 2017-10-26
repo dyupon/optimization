@@ -1,0 +1,123 @@
+\hypertarget{class_square_area}{}\section{Square\+Area Class Reference}
+\label{class_square_area}\index{Square\+Area@{Square\+Area}}
+
+
+Inherited from \hyperlink{class_abstract_area}{Abstract\+Area} class. Specifies to square area.  
+
+
+
+
+{\ttfamily \#include $<$Square\+Area.\+h$>$}
+
+Inheritance diagram for Square\+Area\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_square_area}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_square_area_aa5a2fef6a10af69f1bbf3aea7f3fc355}\label{class_square_area_aa5a2fef6a10af69f1bbf3aea7f3fc355}} 
+{\bfseries Square\+Area} (size\+\_\+t \+\_\+dim)
+\item 
+size\+\_\+t \hyperlink{class_square_area_a4c0aafc649029e04aeffbb69d70311c5}{get\+Dim} () override
+\item 
+\mbox{\Hypertarget{class_square_area_aa90208b80687f7a8b6d539bc333627c9}\label{class_square_area_aa90208b80687f7a8b6d539bc333627c9}} 
+void {\bfseries set\+Border} (const std\+::vector$<$ double $>$ \&\+\_\+upper, const std\+::vector$<$ double $>$ \&\+\_\+lower) override
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_square_area_ae9e9fa4d73c245d00c9bce0786fdce5c}{get\+Upper} () override
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_square_area_a251a1ca1fc74129265c9d53ed508bf22}{get\+Lower} () override
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_square_area_abd7441aaf62dcbf46a22e2d6a5ef34d4}{get\+Approximation\+Inside\+Border} () override
+\item 
+bool \hyperlink{class_square_area_afd99ae01cff4b1e31511a22e9b89b42a}{is\+Out\+Of\+Border} (const std\+::vector$<$ double $>$ \&x) override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_square_area_a229fd5d084dde99c9d55e8053c482ddc}\label{class_square_area_a229fd5d084dde99c9d55e8053c482ddc}} 
+std\+::vector$<$ double $>$ {\bfseries upper}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_square_area_a9225f1cc2152524ea140390d605d65e0}{lower}
+\item 
+size\+\_\+t \hyperlink{class_square_area_ac758b2a9b3f3bd9eb0d3a0c528f23931}{dim}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Inherited from \hyperlink{class_abstract_area}{Abstract\+Area} class. Specifies to square area. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_square_area_abd7441aaf62dcbf46a22e2d6a5ef34d4}\label{class_square_area_abd7441aaf62dcbf46a22e2d6a5ef34d4}} 
+\index{Square\+Area@{Square\+Area}!get\+Approximation\+Inside\+Border@{get\+Approximation\+Inside\+Border}}
+\index{get\+Approximation\+Inside\+Border@{get\+Approximation\+Inside\+Border}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{get\+Approximation\+Inside\+Border()}{getApproximationInsideBorder()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Square\+Area\+::get\+Approximation\+Inside\+Border (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Sets upper and lower bounds for Area 
+
+Implements \hyperlink{class_abstract_area_a832003b7c0e9e75d417c577b56a3013a}{Abstract\+Area}.
+
+\mbox{\Hypertarget{class_square_area_a4c0aafc649029e04aeffbb69d70311c5}\label{class_square_area_a4c0aafc649029e04aeffbb69d70311c5}} 
+\index{Square\+Area@{Square\+Area}!get\+Dim@{get\+Dim}}
+\index{get\+Dim@{get\+Dim}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{get\+Dim()}{getDim()}}
+{\footnotesize\ttfamily size\+\_\+t Square\+Area\+::get\+Dim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Gets lower bounds of Area 
+
+Implements \hyperlink{class_abstract_area_af7e07218e25ae2864d82d829ff1c10b9}{Abstract\+Area}.
+
+\mbox{\Hypertarget{class_square_area_a251a1ca1fc74129265c9d53ed508bf22}\label{class_square_area_a251a1ca1fc74129265c9d53ed508bf22}} 
+\index{Square\+Area@{Square\+Area}!get\+Lower@{get\+Lower}}
+\index{get\+Lower@{get\+Lower}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{get\+Lower()}{getLower()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Square\+Area\+::get\+Lower (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Gets upper bounds of Area 
+
+Implements \hyperlink{class_abstract_area_a6f5b9321813c982b37810b97c2a90257}{Abstract\+Area}.
+
+\mbox{\Hypertarget{class_square_area_ae9e9fa4d73c245d00c9bce0786fdce5c}\label{class_square_area_ae9e9fa4d73c245d00c9bce0786fdce5c}} 
+\index{Square\+Area@{Square\+Area}!get\+Upper@{get\+Upper}}
+\index{get\+Upper@{get\+Upper}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{get\+Upper()}{getUpper()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Square\+Area\+::get\+Upper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Sets the borders of the square domain 
+
+Implements \hyperlink{class_abstract_area_ab54f9d3063d994f780f2b5b67d8751d9}{Abstract\+Area}.
+
+\mbox{\Hypertarget{class_square_area_afd99ae01cff4b1e31511a22e9b89b42a}\label{class_square_area_afd99ae01cff4b1e31511a22e9b89b42a}} 
+\index{Square\+Area@{Square\+Area}!is\+Out\+Of\+Border@{is\+Out\+Of\+Border}}
+\index{is\+Out\+Of\+Border@{is\+Out\+Of\+Border}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{is\+Out\+Of\+Border()}{isOutOfBorder()}}
+{\footnotesize\ttfamily bool Square\+Area\+::is\+Out\+Of\+Border (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Gets current approximation of extremum in case it steps out of Area 
+
+Implements \hyperlink{class_abstract_area_a16c1ac9b2ece460e5e465cda862ce278}{Abstract\+Area}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_square_area_ac758b2a9b3f3bd9eb0d3a0c528f23931}\label{class_square_area_ac758b2a9b3f3bd9eb0d3a0c528f23931}} 
+\index{Square\+Area@{Square\+Area}!dim@{dim}}
+\index{dim@{dim}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily size\+\_\+t Square\+Area\+::dim\hspace{0.3cm}{\ttfamily [private]}}
+
+Lower bound of the area \mbox{\Hypertarget{class_square_area_a9225f1cc2152524ea140390d605d65e0}\label{class_square_area_a9225f1cc2152524ea140390d605d65e0}} 
+\index{Square\+Area@{Square\+Area}!lower@{lower}}
+\index{lower@{lower}!Square\+Area@{Square\+Area}}
+\subsubsection{\texorpdfstring{lower}{lower}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Square\+Area\+::lower\hspace{0.3cm}{\ttfamily [private]}}
+
+Upper bound of the area 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Square\+Area.\+h\item 
+Square\+Area.\+cpp\end{DoxyCompactItemize}

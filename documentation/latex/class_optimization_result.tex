@@ -1,0 +1,83 @@
+\hypertarget{class_optimization_result}{}\section{Optimization\+Result Class Reference}
+\label{class_optimization_result}\index{Optimization\+Result@{Optimization\+Result}}
+
+
+Class used for introduction of results of the optimization.  
+
+
+
+
+{\ttfamily \#include $<$Optimization\+Result.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_optimization_result_a53ac4a868e151c81b9f4cd163705c351}\label{class_optimization_result_a53ac4a868e151c81b9f4cd163705c351}} 
+{\bfseries Optimization\+Result} (int \+\_\+iter\+Count, int \+\_\+function\+Evaluations\+Count, const std\+::vector$<$ double $>$ \&\+\_\+minimum\+Point)
+\item 
+int \hyperlink{class_optimization_result_aab232c5a51fb404c8e1de38b533e617d}{get\+Iter\+Count} () const
+\item 
+int \hyperlink{class_optimization_result_a6f26683de442f45b95462b0dba44d737}{get\+Func\+Evaluation\+Count} () const
+\item 
+const std\+::vector$<$ double $>$ \& \hyperlink{class_optimization_result_a9f3d52b480c6538cd8a2da8aa127dfc8}{get\+Extr\+Point} () const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{class_optimization_result_a2ab3b3a168bf73495f851f80d99ee3d7}{iter\+Count}
+\item 
+const int \hyperlink{class_optimization_result_af9b2136ff128f45202d8ad615c68cf96}{function\+Evaluations\+Count}
+\item 
+const std\+::vector$<$ double $>$ \hyperlink{class_optimization_result_a1d7ce65ebcdedc1d16d5365ca46d6e65}{minimum\+Point}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used for introduction of results of the optimization. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_optimization_result_a9f3d52b480c6538cd8a2da8aa127dfc8}\label{class_optimization_result_a9f3d52b480c6538cd8a2da8aa127dfc8}} 
+\index{Optimization\+Result@{Optimization\+Result}!get\+Extr\+Point@{get\+Extr\+Point}}
+\index{get\+Extr\+Point@{get\+Extr\+Point}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{get\+Extr\+Point()}{getExtrPoint()}}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Optimization\+Result\+::get\+Extr\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets general number of the function evaluations done while optimizing \mbox{\Hypertarget{class_optimization_result_a6f26683de442f45b95462b0dba44d737}\label{class_optimization_result_a6f26683de442f45b95462b0dba44d737}} 
+\index{Optimization\+Result@{Optimization\+Result}!get\+Func\+Evaluation\+Count@{get\+Func\+Evaluation\+Count}}
+\index{get\+Func\+Evaluation\+Count@{get\+Func\+Evaluation\+Count}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{get\+Func\+Evaluation\+Count()}{getFuncEvaluationCount()}}
+{\footnotesize\ttfamily int Optimization\+Result\+::get\+Func\+Evaluation\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets general number of iterations done while optimizing \mbox{\Hypertarget{class_optimization_result_aab232c5a51fb404c8e1de38b533e617d}\label{class_optimization_result_aab232c5a51fb404c8e1de38b533e617d}} 
+\index{Optimization\+Result@{Optimization\+Result}!get\+Iter\+Count@{get\+Iter\+Count}}
+\index{get\+Iter\+Count@{get\+Iter\+Count}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{get\+Iter\+Count()}{getIterCount()}}
+{\footnotesize\ttfamily int Optimization\+Result\+::get\+Iter\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Constructor for \hyperlink{class_optimization_result}{Optimization\+Result} class 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_optimization_result_af9b2136ff128f45202d8ad615c68cf96}\label{class_optimization_result_af9b2136ff128f45202d8ad615c68cf96}} 
+\index{Optimization\+Result@{Optimization\+Result}!function\+Evaluations\+Count@{function\+Evaluations\+Count}}
+\index{function\+Evaluations\+Count@{function\+Evaluations\+Count}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{function\+Evaluations\+Count}{functionEvaluationsCount}}
+{\footnotesize\ttfamily const int Optimization\+Result\+::function\+Evaluations\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+General number of iterations \mbox{\Hypertarget{class_optimization_result_a2ab3b3a168bf73495f851f80d99ee3d7}\label{class_optimization_result_a2ab3b3a168bf73495f851f80d99ee3d7}} 
+\index{Optimization\+Result@{Optimization\+Result}!iter\+Count@{iter\+Count}}
+\index{iter\+Count@{iter\+Count}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{iter\+Count}{iterCount}}
+{\footnotesize\ttfamily const int Optimization\+Result\+::iter\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+Gets the point where the minimum is found at \mbox{\Hypertarget{class_optimization_result_a1d7ce65ebcdedc1d16d5365ca46d6e65}\label{class_optimization_result_a1d7ce65ebcdedc1d16d5365ca46d6e65}} 
+\index{Optimization\+Result@{Optimization\+Result}!minimum\+Point@{minimum\+Point}}
+\index{minimum\+Point@{minimum\+Point}!Optimization\+Result@{Optimization\+Result}}
+\subsubsection{\texorpdfstring{minimum\+Point}{minimumPoint}}
+{\footnotesize\ttfamily const std\+::vector$<$double$>$ Optimization\+Result\+::minimum\+Point\hspace{0.3cm}{\ttfamily [private]}}
+
+General number of the function evaluations 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Optimization\+Result.\+h\item 
+Optimization\+Result.\+cpp\end{DoxyCompactItemize}
