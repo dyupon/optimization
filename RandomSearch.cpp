@@ -1,42 +1,41 @@
 #include <iostream>
 #include "RandomSearch.h"
 
-OptimizationResult RandomSearch::optimize(const std::vector<double> &initialApproximation,
+OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApproximation,
                                           const AbstractCriterion &criteria,
                                           const Function &function) {
-    std::vector<double> initial_approximation = initialApproximation;
+    std::vector<double> initialApproximation = _initialApproximation;
     SquareArea area = function.getDomain();
-    area.setBorder({-10, -10, -10}, {10, 10, 10});
     size_t dim = area.getDim();
     std::vector<double> upper = area.getUpper();
     std::vector<double> lower = area.getLower();
-    std::vector<double> old_approximation, x;
+    std::vector<double> oldApproximation, x;
     x = getRandomPoint(dim, upper, lower);
-    old_approximation = getRandomPoint(dim, upper, lower);
+    oldApproximation = getRandomPoint(dim, upper, lower);
     double eps = 1.0e-15;
-    double neighbor_radius = 0.1;
+    double neighborRadius = 0.1;
     int iterCount = 0;
     int funcEvalCount = 0;
-    std::vector<double> radius = std::vector<double>(dim, neighbor_radius);
-    while (!criteria.isConverged(dim, eps, old_approximation, initial_approximation)) {
+    std::vector<double> radius = std::vector<double>(dim, neighborRadius);
+    while (!criteria.isConverged(dim, eps, oldApproximation, initialApproximation)) {
         ++iterCount;
-        // std::cout << function.getFunctionValue(initial_approximation) << std::endl;
+        // std::cout << function.getFunctionValue(initialApproximation) << std::endl;
         double p_b = runif(gen);
         if (p_b < p) {
             x = getRandomPoint(dim, upper, lower);
-            if (function.getFunctionValue(x) < function.getFunctionValue(initial_approximation)) {
-                old_approximation = initial_approximation;
-                initial_approximation = x;
+            if (function.getFunctionValue(x) < function.getFunctionValue(initialApproximation)) {
+                oldApproximation = initialApproximation;
+                initialApproximation = x;
             }
         } else {
             SquareArea neighbor = SquareArea(dim);
-            std::vector<double> upper_neighbor = sum(x, radius);
-            std::vector<double> lower_neighbor = diff(x, radius);
-            neighbor.setBorder(upper_neighbor, lower_neighbor);
-            x = getRandomPoint(dim, upper_neighbor, lower_neighbor);
-            if (function.getFunctionValue(x) < function.getFunctionValue(initial_approximation)) {
-                old_approximation = initial_approximation;
-                initial_approximation = x;
+            std::vector<double> upperNeighbor = sum(x, radius);
+            std::vector<double> lowerNeighbor = diff(x, radius);
+            neighbor.setBorder(upperNeighbor, lowerNeighbor);
+            x = getRandomPoint(dim, upperNeighbor, lowerNeighbor);
+            if (function.getFunctionValue(x) < function.getFunctionValue(initialApproximation)) {
+                oldApproximation = initialApproximation;
+                initialApproximation = x;
                 for (int i = 0; i < dim; i++) {
                     radius[i] *= 0.9;
                 }
@@ -44,7 +43,7 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &initialAppr
         }
         funcEvalCount += 2;
     }
-    OptimizationResult optimizationResult = OptimizationResult(iterCount, funcEvalCount, initial_approximation);
+    OptimizationResult optimizationResult = OptimizationResult(iterCount, funcEvalCount, initialApproximation);
     return optimizationResult;
 }
 
@@ -63,13 +62,13 @@ RandomSearch::RandomSearch(double _p) {
 std::vector<double> RandomSearch::getRandomPoint(size_t dim,
                                                  const std::vector<double> &upper,
                                                  const std::vector<double> &lower) {
-    std::vector<double> random_point;
-    random_point.reserve(dim);
+    std::vector<double> randomPoint;
+    randomPoint.reserve(dim);
     for (int i = 0; i < dim; ++i) {
         double rnd = runif(gen);
-        random_point.push_back(lower[i] + rnd * (upper[i] - lower[i]));
+        randomPoint.push_back(lower[i] + rnd * (upper[i] - lower[i]));
     }
-    return random_point;
+    return randomPoint;
 }
 
 std::vector<double> RandomSearch::sum(const std::vector<double> &a, const std::vector<double> &b) const {

@@ -14,8 +14,11 @@ std::vector<double> SquareArea::getApproximationInsideBorder() {
 }
 
 bool SquareArea::isOutOfBorder(const std::vector<double> &x) {
-
-    return false;
+    bool result = 0;
+    for (int i = 0; i < dim; ++i) {
+        result = (lower[i] < x[i] && x[i] < upper[i]);
+    }
+    return !result;
 }
 
 size_t SquareArea::getDim() {
@@ -31,7 +34,7 @@ std::vector<double> SquareArea::getLower() {
     return lower;
 }
 
-SquareArea::SquareArea() {}
+SquareArea::SquareArea() = default;
 
 std::vector<double> SquareArea::getRandomPointOnBorder(const std::vector<double> &point_1,
                                                        const std::vector<double> &point_2) {

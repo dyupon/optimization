@@ -52,7 +52,8 @@ int main() {
         double scale = 1.0;
         EpsilonCriterion criteria = EpsilonCriterion(dim, eps);
         NelderMeadOptimization nelderMeadOptimization = NelderMeadOptimization(dim, scale);
-        OptimizationResult optimizationResult = nelderMeadOptimization.optimize(initial_approximation, criteria, function);
+        OptimizationResult optimizationResult = nelderMeadOptimization.optimize(initial_approximation, criteria,
+                                                                                function);
         printOptimizationResult(function, optimizationResult);
     }
     if (flag == 2) {

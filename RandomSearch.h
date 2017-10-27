@@ -13,6 +13,7 @@ public:
                                 const Function &function) override;
 
     explicit RandomSearch(double _p);
+
 private:
     double p; /** Probability of searching in the whole area **/
     std::mt19937 gen; /** PRNG **/

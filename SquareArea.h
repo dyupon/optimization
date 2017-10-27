@@ -28,6 +28,9 @@ public:
     std::vector<double> getApproximationInsideBorder() override;
 
     bool isOutOfBorder(const std::vector<double> &x) override;
+
+    std::vector<double>
+    getRandomPointOnBorder(const std::vector<double> &point_1, const std::vector<double> &point_2);
 };
 
 

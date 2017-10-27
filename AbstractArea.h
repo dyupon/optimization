@@ -2,6 +2,7 @@
 
 #ifndef NELDERMID_ABSTRACTAREA_H
 #define NELDERMID_ABSTRACTAREA_H
+
 #include <vector>
 #include <cstddef>
 

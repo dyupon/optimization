@@ -3,6 +3,7 @@
 
 #ifndef NELDERMID_OPTIMIZATIONRESULT_H
 #define NELDERMID_OPTIMIZATIONRESULT_H
+
 #include <vector>
 
 class OptimizationResult {
