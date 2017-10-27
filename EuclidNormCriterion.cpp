@@ -7,7 +7,6 @@ bool EuclidNormCriterion::isConverged(const std::vector<double> &function) const
 }
 
 bool EuclidNormCriterion::isConverged(size_t dim,
-                                      double eps,
                                       const std::vector<double> &previousApproximation,
                                       const std::vector<double> &newApproximation) const {
     ++iterCount;
@@ -19,6 +18,7 @@ bool EuclidNormCriterion::isConverged(size_t dim,
     return (std::sqrt(sum) < eps) || (iterCount > MAX_ITER_COUNT);
 }
 
-EuclidNormCriterion::EuclidNormCriterion() {
+EuclidNormCriterion::EuclidNormCriterion(double _eps) {
+    eps = _eps;
     iterCount = 0;
 }

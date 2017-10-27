@@ -19,7 +19,6 @@ bool EpsilonCriterion::isConverged(const std::vector<double> &function) const {
 }
 
 bool EpsilonCriterion::isConverged(size_t dim,
-                                   double eps,
                                    const std::vector<double> &previousApproximation,
                                    const std::vector<double> &newApproximation) const {
     return false;

@@ -46,9 +46,11 @@ int main() {
         std::cin >> currentCoordinate;
         lower.push_back(currentCoordinate);
     }
+    std::cout << "Enter the value of epsilon as a parameter for testing convergence: " << std::endl;
+    double eps;// 1.0e-15;
+    std::cin >> eps;
     FunctionOptimize function = FunctionOptimize(dim, upper, lower);
     if (flag == 1) {
-        double eps = 1.0e-15;
         double scale = 1.0;
         EpsilonCriterion criteria = EpsilonCriterion(dim, eps);
         NelderMeadOptimization nelderMeadOptimization = NelderMeadOptimization(dim, scale);
@@ -60,7 +62,7 @@ int main() {
         double p;
         std::cout << "Enter the probability of searching the whole area: " << std::endl;
         std::cin >> p;
-        EuclidNormCriterion euclidNormCriterion = EuclidNormCriterion();
+        EuclidNormCriterion euclidNormCriterion = EuclidNormCriterion(eps);
         try {
             RandomSearch randomSearch = RandomSearch(p);
             OptimizationResult optimizationResult = randomSearch.optimize(initial_approximation, euclidNormCriterion,

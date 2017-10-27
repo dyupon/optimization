@@ -15,7 +15,6 @@ public:
     bool isConverged(const std::vector<double> &function) const override;
 
     bool isConverged(size_t dim,
-                     double eps,
                      const std::vector<double> &previousApproximation,
                      const std::vector<double> &newApproximation) const override;
 };

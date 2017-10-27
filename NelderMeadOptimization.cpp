@@ -65,7 +65,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
         }
 
         int nextSmallestValueVertex = smallestValueVertex;
-        for (int i = 0; i <= dim; i++) {
+        for (int i = 0; i <= dim; ++i) {
             if (functionValues[i] > functionValues[nextSmallestValueVertex] &&
                 functionValues[i] < functionValues[largestValueVertex]) {
                 nextSmallestValueVertex = i;
@@ -84,7 +84,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
 
         std::vector<double> vertexReflection;
         vertexReflection.reserve(dim);
-        for (int i = 0; i <= dim - 1; i++) {
+        for (int i = 0; i <= dim - 1; ++i) {
             vertexReflection.push_back(vm[i] + ALPHA * (vm[i] - simplex[largestValueVertex][i]));
         }
 
@@ -95,7 +95,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
 
         if (reflectionPoint < functionValues[nextSmallestValueVertex] &&
             reflectionPoint >= functionValues[smallestValueVertex]) {
-            for (int i = 0; i <= dim - 1; i++) {
+            for (int i = 0; i <= dim - 1; ++i) {
                 simplex[largestValueVertex][i] = vertexReflection[i];
             }
             functionValues[largestValueVertex] = reflectionPoint;
@@ -148,7 +148,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                 }
                 functionValues[largestValueVertex] = contractionPoint;
             } else {
-                for (int row = 0; row <= dim; row++) {
+                for (int row = 0; row <= dim; ++row) {
                     if (row != smallestValueVertex) {
                         for (int i = 0; i <= dim - 1; ++i) {
                             simplex[row][i] = simplex[smallestValueVertex][i] +
