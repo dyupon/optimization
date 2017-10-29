@@ -1,12 +1,12 @@
 #include <iostream>
 #include "EpsilonCriterion.h"
 #include "Function.h"
-#include "FunctionOptimize.h"
+#include "Function1.h"
 #include "NelderMeadOptimization.h"
 #include "RandomSearch.h"
 #include "EuclidNormCriterion.h"
 
-void printOptimizationResult(const FunctionOptimize &function, const OptimizationResult &optimizationResult) {
+void printOptimizationResult(const Function1 &function, const OptimizationResult &optimizationResult) {
     std::cout << "Minimum was found at: " << std::endl;
     std::vector<double> extr = optimizationResult.getExtrPoint();
     for (double i : extr) {
@@ -49,7 +49,7 @@ int main() {
     std::cout << "Enter the value of epsilon as a parameter for testing convergence: " << std::endl;
     double eps;// 1.0e-15;
     std::cin >> eps;
-    FunctionOptimize function = FunctionOptimize(dim, upper, lower);
+    Function1 function = Function1(dim, upper, lower);
     if (flag == 1) {
         double scale = 1.0;
         EpsilonCriterion criteria = EpsilonCriterion(dim, eps);

@@ -42,12 +42,12 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
         }
         simplex.push_back(simplexRow);
     }
-
+    // TODO 1. Найти центр тяжести начального симплекcа 2. Найти центр тяжести прямоугольной области 3. Совместить его с центром тяжести начального симплекса
     for (int i = 0; i <= dim; ++i) {
         functionValues.push_back(function.getFunctionValue(simplex[i]));
     }
 
-    int functionEvaluationsCount = dim + 1;
+    int functionEvaluationsCount = static_cast<int>(dim + 1);
 
     int largestValueVertex = 0;
     int smallestValueVertex = 0;
@@ -88,7 +88,6 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
             vertexReflection.push_back(vm[i] + ALPHA * (vm[i] - simplex[largestValueVertex][i]));
         }
 
-//            TODO: while deforming the simplex fit all the new vertices in borders
 
         reflectionPoint = function.getFunctionValue(vertexReflection);
         ++functionEvaluationsCount;

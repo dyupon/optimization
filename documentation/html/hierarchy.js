@@ -12,7 +12,7 @@ var hierarchy =
       [ "RandomSearch", "class_random_search.html", null ]
     ] ],
     [ "Function", "class_function.html", [
-      [ "FunctionOptimize", "class_function_optimize.html", null ]
+      [ "Function1", "class_function_optimize.html", null ]
     ] ],
     [ "OptimizationResult", "class_optimization_result.html", null ]
 ];
