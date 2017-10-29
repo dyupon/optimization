@@ -5,6 +5,7 @@
 
 #include "AbstractOptimizationMethod.h"
 #include "OptimizationResult.h"
+#include "FunctionImplementation.h"
 
 class NelderMeadOptimization : public AbstractOptimizationMethod {
 private:
@@ -20,7 +21,7 @@ public:
 
     OptimizationResult optimize(const std::vector<double> &initialApproximation,
                                 const AbstractCriterion &criteria,
-                                const Function &function) override;
+                                FunctionImplementation *function) override;
 };
 
 #endif //NELDERMID_NELDERMEADOPTIMIZATION_H

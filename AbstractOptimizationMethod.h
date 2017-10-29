@@ -8,13 +8,15 @@
 #include "AbstractArea.h"
 #include "Function.h"
 #include "OptimizationResult.h"
+#include "FunctionImplementation.h"
+
 
 class AbstractOptimizationMethod {
 public:
     virtual OptimizationResult optimize(
             const std::vector<double> &initialApproximation,
             const AbstractCriterion &criterion,
-            const Function &function
+            FunctionImplementation *function
     ) = 0; /** Main method for running optimization for function starting from initialApproximation and finishing when convergence criterion is reached **/
 };
 

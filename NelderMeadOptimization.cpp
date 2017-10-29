@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include "NelderMeadOptimization.h"
+#include "FunctionImplementation.h"
 
 const double NelderMeadOptimization::ALPHA = 1.0;
 const double NelderMeadOptimization::BETA = 0.5;
@@ -11,7 +12,7 @@ NelderMeadOptimization::NelderMeadOptimization(size_t _dim, double _scale) : dim
 
 OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_initialApproximation,
                                                     const AbstractCriterion &criteria,
-                                                    const Function &function) {
+                                                    FunctionImplementation *function) {
     std::vector<double> functionValues;
     functionValues.reserve(dim + 1);
     std::vector<double> vm;
@@ -44,7 +45,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
     }
     // TODO 1. Найти центр тяжести начального симплекcа 2. Найти центр тяжести прямоугольной области 3. Совместить его с центром тяжести начального симплекса
     for (int i = 0; i <= dim; ++i) {
-        functionValues.push_back(function.getFunctionValue(simplex[i]));
+        functionValues.push_back(function->getFunctionValue(simplex[i]));
     }
 
     int functionEvaluationsCount = static_cast<int>(dim + 1);
@@ -89,7 +90,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
         }
 
 
-        reflectionPoint = function.getFunctionValue(vertexReflection);
+        reflectionPoint = function->getFunctionValue(vertexReflection);
         ++functionEvaluationsCount;
 
         if (reflectionPoint < functionValues[nextSmallestValueVertex] &&
@@ -107,7 +108,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                 vertex_expansion.push_back(vm[i] + GAMMA * (vertexReflection[i] - vm[i]));
             }
 
-            expansionPoint = function.getFunctionValue(vertex_expansion);
+            expansionPoint = function->getFunctionValue(vertex_expansion);
             functionEvaluationsCount++;
 
             if (expansionPoint < reflectionPoint) {
@@ -131,13 +132,13 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                 for (int i = 0; i <= dim - 1; ++i) {
                     vertexContraction.push_back(vm[i] + BETA * (vertexReflection[i] - vm[i]));
                 }
-                contractionPoint = function.getFunctionValue(vertexContraction);
+                contractionPoint = function->getFunctionValue(vertexContraction);
                 ++functionEvaluationsCount;
             } else {
                 for (int i = 0; i <= dim - 1; ++i) {
                     vertexContraction.push_back(vm[i] - BETA * (vm[i] - simplex[largestValueVertex][i]));
                 }
-                contractionPoint = function.getFunctionValue(vertexContraction);
+                contractionPoint = function->getFunctionValue(vertexContraction);
                 ++functionEvaluationsCount;
             }
 
@@ -156,10 +157,10 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                     }
                 }
 
-                functionValues[largestValueVertex] = function.getFunctionValue(simplex[largestValueVertex]);
+                functionValues[largestValueVertex] = function->getFunctionValue(simplex[largestValueVertex]);
                 ++functionEvaluationsCount;
 
-                functionValues[nextSmallestValueVertex] = function.getFunctionValue(
+                functionValues[nextSmallestValueVertex] = function->getFunctionValue(
                         simplex[nextSmallestValueVertex]);
                 ++functionEvaluationsCount;
             }

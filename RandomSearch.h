@@ -5,12 +5,13 @@
 
 #include <random>
 #include "AbstractOptimizationMethod.h"
+#include "FunctionImplementation.h"
 
 class RandomSearch : public AbstractOptimizationMethod {
 public:
     OptimizationResult optimize(const std::vector<double> &initialApproximation,
                                 const AbstractCriterion &criteria,
-                                const Function &function) override;
+                                FunctionImplementation *function) override;
 
     explicit RandomSearch(double _p);
 

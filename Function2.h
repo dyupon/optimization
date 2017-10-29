@@ -6,19 +6,13 @@
 #define NELDERMID_FUNCTION2_H
 
 #include "Function.h"
+#include "FunctionImplementation.h"
 
-class Function2 : public Function {
+class Function2 : public FunctionImplementation {
 public:
     double getFunctionValue(const std::vector<double> &x) const override;
 
     Function2(int _dim, const std::vector<double> &upper, const std::vector<double> &lower);
-
-    SquareArea getDomain() const override;
-
-private:
-    int dim; /** Dimension of the area **/
-    SquareArea area; /** Object of class SquareArea where the current function is defined **/
-
 };
 
 
