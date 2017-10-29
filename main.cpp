@@ -30,8 +30,7 @@ int main() {
     std::cout << "2 for (1.23 - x + xy)^2 + (2.25 - x + xy^2)^2 + (2.625 - x + xy^3)^2" << std::endl;
     std::cout << "3 for 0.26(x^2 + y^2) - 0.48xy " << std::endl;
     std::cin >> functionFlag;
-    size_t dim;
-    FunctionImplementation *function;
+    size_t dim = 0;
     switch (functionFlag) {
         case 1:
             dim = DIM_3D;
@@ -72,6 +71,7 @@ int main() {
     std::cout << "Enter the value of epsilon as a parameter for testing convergence: " << std::endl;
     double eps;// 1.0e-15;
     std::cin >> eps;
+    FunctionImplementation *function = 0;
     switch (functionFlag) {
         case 1:
             function = new Function1(dim, upper, lower);
