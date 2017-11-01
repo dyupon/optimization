@@ -1,6 +1,7 @@
 #include <iostream>
 #include "RandomSearch.h"
 #include "FunctionImplementation.h"
+#include "Utils.h"
 
 OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApproximation,
                                           const AbstractCriterion &criteria,
@@ -16,6 +17,7 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApp
     double neighborRadius = 0.1;
     int iterCount = 0;
     int funcEvalCount = 0;
+    Utils<double> utils = Utils<double>();
     std::vector<double> radius = std::vector<double>(dim, neighborRadius);
     while (!criteria.isConverged(dim, oldApproximation, initialApproximation)) {
         ++iterCount;
@@ -28,8 +30,8 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApp
             }
         } else {
             SquareArea neighbor = SquareArea(dim);
-            std::vector<double> upperNeighbor = sum(x, radius);
-            std::vector<double> lowerNeighbor = diff(x, radius);
+            std::vector<double> upperNeighbor = utils.sum(x, radius);
+            std::vector<double> lowerNeighbor = utils.diff(x, radius);
             neighbor.setBorder(upperNeighbor, lowerNeighbor);
             x = getRandomPoint(dim, upperNeighbor, lowerNeighbor);
             if (function->getFunctionValue(x) < function->getFunctionValue(initialApproximation)) {
@@ -68,22 +70,6 @@ std::vector<double> RandomSearch::getRandomPoint(size_t dim,
         randomPoint.push_back(lower[i] + rnd * (upper[i] - lower[i]));
     }
     return randomPoint;
-}
-
-std::vector<double> RandomSearch::sum(const std::vector<double> &a, const std::vector<double> &b) const {
-    std::vector<double> result;
-    for (int i = 0; i < a.size(); ++i) {
-        result.push_back(a[i] + b[i]);
-    }
-    return result;
-}
-
-std::vector<double> RandomSearch::diff(const std::vector<double> &a, const std::vector<double> &b) const {
-    std::vector<double> result;
-    for (int i = 0; i < a.size(); ++i) {
-        result.push_back(a[i] - b[i]);
-    }
-    return result;
 }
 
 

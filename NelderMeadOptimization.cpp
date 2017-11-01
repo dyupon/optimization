@@ -2,6 +2,7 @@
 #include <iostream>
 #include "NelderMeadOptimization.h"
 #include "FunctionImplementation.h"
+#include "Utils.h"
 
 const double NelderMeadOptimization::ALPHA = 1.0;
 const double NelderMeadOptimization::BETA = 0.5;
@@ -15,17 +16,18 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                                                     FunctionImplementation *function) {
     std::vector<double> functionValues;
     functionValues.reserve(dim + 1);
-    std::vector<double> vm;
-    vm.reserve(dim);
+    std::vector<double> centerOfMass;
+    centerOfMass.reserve(dim);
+    SquareArea area = function->getDomain();
+    std::vector<double> upper = area.getUpper();
+    std::vector<double> lower = area.getLower();
+    Utils<double> utils = Utils<double>();
 
     std::vector<double> initialApproximation = _initialApproximation;
     double reflectionPoint, expansionPoint, contractionPoint, simplexVertex1, simplexVertex2, center;
 
     simplexVertex1 = scale * (std::sqrt(dim + 1) - 1 + dim) / (dim * std::sqrt(2));
     simplexVertex2 = scale * (std::sqrt(dim + 1) - 1) / (dim * std::sqrt(2));
-    /* SquareArea domain = function.getDomain();
-     std::vector<double> upper = domain.getUpper();
-     std::vector<double> lower = domain.getLower();*/
 
     std::vector<std::vector<double>> simplex;
     simplex.reserve(dim + 1);
@@ -43,12 +45,45 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
         }
         simplex.push_back(simplexRow);
     }
-    // TODO 1. Найти центр тяжести начального симплекcа 2. Найти центр тяжести прямоугольной области 3. Совместить его с центром тяжести начального симплекса
+    std::vector<double> simplexMassCntr;
+    simplexMassCntr.reserve(dim);
+    for (int i = 0; i < dim; ++i) {
+        center = 0.0;
+        for (int j = 0; j < dim + 1; ++j) {
+            center += simplex[j][i];
+        }
+        simplexMassCntr.push_back(center / dim);
+    }
+    if (area.isOutOfBorder(simplexMassCntr)) {
+        std::vector<double> areaMassCntr;
+        areaMassCntr.reserve(dim);
+        for (int i = 0; i < areaMassCntr.size(); ++i) {
+            double currentCoordinate = (upper[i] + lower[i]) / 2;
+            areaMassCntr.push_back(currentCoordinate);
+        }
+        std::vector<double> shift;
+        shift.reserve(dim);
+        for (int i = 0; i < shift.size(); ++i) {
+            double currentShift = fabs(simplexMassCntr[i] - areaMassCntr[i]);
+            shift.push_back(currentShift);
+        }
+        for (auto &i : simplex) {
+            i = utils.diff(i, shift);
+        }
+    }
+
+    for (const auto &i : simplex) {
+        if (area.isOutOfBorder(i)) {
+
+        }
+    }
+
+
     for (int i = 0; i <= dim; ++i) {
         functionValues.push_back(function->getFunctionValue(simplex[i]));
     }
 
-    int functionEvaluationsCount = static_cast<int>(dim + 1);
+    auto functionEvaluationsCount = static_cast<int>(dim + 1);
 
     int largestValueVertex = 0;
     int smallestValueVertex = 0;
@@ -73,20 +108,20 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
             }
         }
 
-        for (int i = 0; i <= dim - 1; ++i) {
+        for (int i = 0; i < dim; ++i) {
             center = 0.0;
-            for (int j = 0; j <= dim; ++j) {
+            for (int j = 0; j < dim + 1; ++j) {
                 if (j != largestValueVertex) {
                     center += simplex[j][i];
                 }
             }
-            vm[i] = center / dim;
+            centerOfMass[i] = center / dim;
         }
 
         std::vector<double> vertexReflection;
         vertexReflection.reserve(dim);
         for (int i = 0; i <= dim - 1; ++i) {
-            vertexReflection.push_back(vm[i] + ALPHA * (vm[i] - simplex[largestValueVertex][i]));
+            vertexReflection.push_back(centerOfMass[i] + ALPHA * (centerOfMass[i] - simplex[largestValueVertex][i]));
         }
 
 
@@ -105,7 +140,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
             std::vector<double> vertex_expansion;
             vertex_expansion.reserve(dim);
             for (int i = 0; i <= dim - 1; ++i) {
-                vertex_expansion.push_back(vm[i] + GAMMA * (vertexReflection[i] - vm[i]));
+                vertex_expansion.push_back(centerOfMass[i] + GAMMA * (vertexReflection[i] - centerOfMass[i]));
             }
 
             expansionPoint = function->getFunctionValue(vertex_expansion);
@@ -130,13 +165,14 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
             if (reflectionPoint < functionValues[largestValueVertex] &&
                 reflectionPoint >= functionValues[nextSmallestValueVertex]) {
                 for (int i = 0; i <= dim - 1; ++i) {
-                    vertexContraction.push_back(vm[i] + BETA * (vertexReflection[i] - vm[i]));
+                    vertexContraction.push_back(centerOfMass[i] + BETA * (vertexReflection[i] - centerOfMass[i]));
                 }
                 contractionPoint = function->getFunctionValue(vertexContraction);
                 ++functionEvaluationsCount;
             } else {
                 for (int i = 0; i <= dim - 1; ++i) {
-                    vertexContraction.push_back(vm[i] - BETA * (vm[i] - simplex[largestValueVertex][i]));
+                    vertexContraction.push_back(
+                            centerOfMass[i] - BETA * (centerOfMass[i] - simplex[largestValueVertex][i]));
                 }
                 contractionPoint = function->getFunctionValue(vertexContraction);
                 ++functionEvaluationsCount;

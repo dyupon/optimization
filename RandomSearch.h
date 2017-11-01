@@ -23,12 +23,6 @@ private:
     std::vector<double>
     getRandomPoint(size_t dim, const std::vector<double> &upper,
                    const std::vector<double> &lower); /** Gets random point inside the specified by bounds area **/
-
-    std::vector<double> sum(const std::vector<double> &a,
-                            const std::vector<double> &b) const; /** Returns componentwise sum of 2 vectors **/
-
-    std::vector<double> diff(const std::vector<double> &a,
-                             const std::vector<double> &b) const; /** Returns componentwise diff of 2 vectors **/
 };
 
 
