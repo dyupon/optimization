@@ -12,7 +12,7 @@ NelderMeadOptimization::NelderMeadOptimization(size_t _dim, double _scale) : dim
 }
 
 OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_initialApproximation,
-                                                    const AbstractCriterion &criteria,
+                                                    std::shared_ptr<AbstractCriterion> &criterion,
                                                     FunctionImplementation *function) {
     std::vector<double> functionValues;
     functionValues.reserve(dim + 1);
@@ -74,7 +74,14 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
 
     for (const auto &i : simplex) {
         if (area.isOutOfBorder(i)) {
+            for (int j = 0; j < i.size(); ++j) {
+                if (i[j] > upper[j]) {
 
+                }
+                if (i[j] < lower[j]) {
+
+                }
+            }
         }
     }
 
@@ -201,7 +208,7 @@ OptimizationResult NelderMeadOptimization::optimize(const std::vector<double> &_
                 ++functionEvaluationsCount;
             }
         }
-        if (criteria.isConverged(functionValues)) break;
+        if (criterion->isConverged(functionValues, dim)) break;
     }
 
     for (int i = 0; i < dim; ++i) {

@@ -10,7 +10,9 @@
 
 class FunctionImplementation : public Function {
 public:
-    virtual double getFunctionValue(const std::vector<double> &x) const override = 0;
+    virtual ~FunctionImplementation() = default;
+
+    double getFunctionValue(const std::vector<double> &x) const override = 0;
 
     FunctionImplementation(int _dim, const std::vector<double> &upper, const std::vector<double> &lower);
 

@@ -4,7 +4,7 @@
 #include "Utils.h"
 
 OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApproximation,
-                                          const AbstractCriterion &criteria,
+                                          std::shared_ptr<AbstractCriterion> &criterion,
                                           FunctionImplementation *function) {
     std::vector<double> initialApproximation = _initialApproximation;
     SquareArea area = function->getDomain();
@@ -19,7 +19,7 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApp
     int funcEvalCount = 0;
     Utils<double> utils = Utils<double>();
     std::vector<double> radius = std::vector<double>(dim, neighborRadius);
-    while (!criteria.isConverged(dim, oldApproximation, initialApproximation)) {
+    while (!criterion->isConverged(dim, oldApproximation, initialApproximation)) {
         ++iterCount;
         double p_b = runif(gen);
         if (p_b < p) {
@@ -38,7 +38,7 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApp
                 oldApproximation = initialApproximation;
                 initialApproximation = x;
                 for (int i = 0; i < dim; i++) {
-                    radius[i] *= 0.9; //TODO enter const from console
+                    radius[i] *= resizeCoef;
                 }
             }
         }
@@ -48,7 +48,7 @@ OptimizationResult RandomSearch::optimize(const std::vector<double> &_initialApp
     return optimizationResult;
 }
 
-RandomSearch::RandomSearch(double _p) {
+RandomSearch::RandomSearch(double _p, double _resizeCoef) : resizeCoef(_resizeCoef) {
     if (_p < 0.0 || _p > 1.0) {
         throw std::invalid_argument("Probability should be between 0 and 1");
     }

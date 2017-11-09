@@ -3,6 +3,7 @@
 #ifndef NELDERMID_NELDERMEADOPTIMIZATION_H
 #define NELDERMID_NELDERMEADOPTIMIZATION_H
 
+#include <memory>
 #include "AbstractOptimizationMethod.h"
 #include "OptimizationResult.h"
 #include "FunctionImplementation.h"
@@ -20,7 +21,7 @@ public:
     NelderMeadOptimization(size_t _dim, double _scale);
 
     OptimizationResult optimize(const std::vector<double> &initialApproximation,
-                                const AbstractCriterion &criteria,
+                                std::shared_ptr<AbstractCriterion> &criterion,
                                 FunctionImplementation *function) override;
 };
 

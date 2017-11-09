@@ -2,10 +2,6 @@
 #include "EuclidNormCriterion.h"
 #include <cmath>
 
-bool EuclidNormCriterion::isConverged(const std::vector<double> &function) const {
-    return false;
-}
-
 bool EuclidNormCriterion::isConverged(size_t dim,
                                       const std::vector<double> &previousApproximation,
                                       const std::vector<double> &newApproximation) const {
@@ -18,7 +14,6 @@ bool EuclidNormCriterion::isConverged(size_t dim,
     return (std::sqrt(sum) < eps) || (iterCount > MAX_ITER_COUNT);
 }
 
-EuclidNormCriterion::EuclidNormCriterion(double _eps) {
-    eps = _eps;
-    iterCount = 0;
+EuclidNormCriterion::EuclidNormCriterion(double _eps) : AbstractCriterion(_eps) {
+
 }
